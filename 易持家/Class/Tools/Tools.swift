@@ -98,6 +98,7 @@ func payTheKeyboardConstraints(TextField:UITextField, string: String) ->Bool{
     return true
 }
 
+///  支付键盘限制条件
 func  paytextFieldDidEndEditingTextField(textField:UITextField){
     var range  = NSRange()
     range.length = 1
@@ -109,6 +110,7 @@ func  paytextFieldDidEndEditingTextField(textField:UITextField){
     }
 }
 
+///  支付键盘限制条件
 func paytextFieldDidBeginEditingTextField(textField :UITextField){
     if textField.text?.characters.count == 1 {
         var range = NSRange()
@@ -120,4 +122,6 @@ func paytextFieldDidBeginEditingTextField(textField :UITextField){
         }
     }
 }
+
+
 

@@ -40,10 +40,10 @@
                                 <exclude reference="WSJ-2D-KGs"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="DNZ-l8-AVp"/>
                                 <exclude reference="QiR-PM-6kW"/>
                                 <exclude reference="Wjd-RZ-sOb"/>
                                 <exclude reference="pk5-co-Zwk"/>
-                                <exclude reference="DNZ-l8-AVp"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -51,10 +51,10 @@
                                 <include reference="WSJ-2D-KGs"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="DNZ-l8-AVp"/>
                                 <include reference="QiR-PM-6kW"/>
                                 <include reference="Wjd-RZ-sOb"/>
                                 <include reference="pk5-co-Zwk"/>
-                                <include reference="DNZ-l8-AVp"/>
                             </mask>
                         </variation>
                     </view>
