@@ -123,5 +123,9 @@ func paytextFieldDidBeginEditingTextField(textField :UITextField){
     }
 }
 
+func hanwanjie(){
+
+}
+
 
 
