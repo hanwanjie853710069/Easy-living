@@ -12,10 +12,11 @@ class ELAddVC:
     CMBaseViewController,
     UITableViewDelegate,
     dataChangeDelegate,
+    UIAlertViewDelegate,
     UITableViewDataSource{
     
     lazy var tableView : UITableView = {
-        let tabV = UITableView()
+        let tabV = UITableView.init(frame: CGRectMake(0, 0, 0, 0), style: .Grouped)
         tabV.backgroundColor = UIColor.whiteColor()
         tabV.delegate = self
         tabV.dataSource = self
@@ -26,15 +27,28 @@ class ELAddVC:
     let dataArray = ["早",
                      "中",
                      "晚"]
+        /// 早中晚消费的金额及备注
+    var zzwData = (zsMoney: "0",zsNote: "",
+                   zwMoney: "0",zwNote: "",
+                   wsMoney: "0",wsNote: "")
     
+        /// 早中晚消费的金额
     var earlyMoney = "0"
     var inTheMoney = "0"
     var eveningMoney = "0"
+        /// 消费时间
+    var xfTime = getLocalTime()
+        /// 总金额  消费金额  剩余金额
+    var zjeMoney = "0"
+    var xfMonery = "0"
+    var syMonery = "0"
+    
     
     var AddToCalculateCell : AddToCalculateVcCell!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        /// 注册通知
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.getTheTotalAmount), name:theTotalAmountIds, object: nil)
         creatUI()
     }
@@ -79,7 +93,32 @@ extension ELAddVC{
         cell.delegate = self
         cell.nameLabel.text = dataArray[indexPath.row - 1]
         cell.amountTextFile.tag = 100 + indexPath.row
+        cell.noteTextView.tag = 200 + indexPath.row
         return cell
+    }
+    
+    func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let view = UIView.init(frame: CGRectMake(0, 0, ScreenWidth, 200))
+        let footerBtn = UIButton()
+        view.addSubview(footerBtn)
+        footerBtn.autoPinEdgeToSuperviewEdge(.Left)
+        footerBtn.autoPinEdgeToSuperviewEdge(.Bottom, withInset: 60)
+        footerBtn.autoPinEdgeToSuperviewEdge(.Right)
+        footerBtn.autoSetDimension(.Height, toSize: 40)
+        footerBtn.setTitleColor(UIColor.brownColor(), forState: .Normal)
+        footerBtn.setTitleColor(MainColore, forState: .Highlighted)
+        footerBtn.setTitle("确认", forState: .Normal)
+        footerBtn.backgroundColor = MainColore
+        footerBtn.addTarget(self, action: #selector(self.creatCoreData), forControlEvents: .TouchUpInside)
+        return view
+    }
+    
+    func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 160
+    }
+    
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 0.1
     }
     
     ///  创建选择时间器
@@ -87,6 +126,7 @@ extension ELAddVC{
         let dateP = DatePackerView.init(frame: CGRectMake(0, 0, ScreenWidth, ScreenHeight))
         dateP.initTimeBack { (timeString) in
             timeBtn.setTitle(timeString, forState: .Normal)
+            self.xfTime = timeString
         }
         UIApplication.sharedApplication().keyWindow?.addSubview(dateP)
     }
@@ -101,6 +141,8 @@ extension ELAddVC{
         //notification.userInfo
         if textFiled.text?.characters.count > 0 {
             self.AddToCalculateCell.moneyRemainingLabel.text = String(Float(textFiled.text!)! - Float(self.AddToCalculateCell.moneyAllLabel.text!)!)
+            self.syMonery = self.AddToCalculateCell.moneyRemainingLabel.text!
+            self.zjeMoney = textFiled.text!
         }
     }
     
@@ -112,6 +154,8 @@ extension ELAddVC{
             cell.layoutMargins = UIEdgeInsetsZero
         }
     }
+    
+    //textFiled输入结束后调用
     func changeDataFunc(anyObject: UITextField) {
     
             switch anyObject.tag {
@@ -119,24 +163,121 @@ extension ELAddVC{
                 self.earlyMoney = "0"
                 if anyObject.text?.characters.count > 0 {
                  self.earlyMoney = (anyObject.text)!
+                    zzwData.zsMoney = anyObject.text!
                 }
             case 102:
                 self.inTheMoney = "0"
                 if anyObject.text?.characters.count > 0 {
                     self.inTheMoney = (anyObject.text)!
+                    zzwData.zwMoney = anyObject.text!
                 }
             case 103:
                 self.eveningMoney = "0"
                 if anyObject.text?.characters.count > 0 {
                     self.eveningMoney = (anyObject.text)!
+                    zzwData.wsMoney = anyObject.text!
                 }
             default:
                  print("")
             }
         
         self.AddToCalculateCell.moneyAllLabel.text = String(Float(self.earlyMoney)! + Float(self.inTheMoney)! + Float(self.eveningMoney)!)
+        self.xfMonery = self.AddToCalculateCell.moneyAllLabel.text!
         if self.AddToCalculateCell.moneyTextFlied.text?.characters.count > 0 {
              self.AddToCalculateCell.moneyRemainingLabel.text = String(Float(self.AddToCalculateCell.moneyTextFlied.text!)! - Float(self.AddToCalculateCell.moneyAllLabel.text!)!)
+            self.syMonery = self.AddToCalculateCell.moneyRemainingLabel.text!
+            self.zjeMoney = self.AddToCalculateCell.moneyTextFlied.text!
+        }
+    }
+    
+    //textView输入结束后调用
+    func changeDataTextViewFunc(anyObject: UITextView){
+        
+        switch anyObject.tag {
+        case 201:
+            if anyObject.text?.characters.count > 0 {
+                zzwData.zsNote = anyObject.text!
+            }
+        case 202:
+            if anyObject.text?.characters.count > 0 {
+                zzwData.zwNote = anyObject.text!
+            }
+        case 203:
+            if anyObject.text?.characters.count > 0 {
+                zzwData.wsNote = anyObject.text!
+            }
+        default:
+            print("")
+        }
+    }
+    
+    func creatCoreData(){
+        
+//        //It's necessary to code these two rows if you want to use CoreData
+//        
+//        var applicationDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+//        
+//        var managedObjectContext = applicationDelegate.managedObjectContext
+//        
+//        //Get the entity by entityName
+//        
+//        var entity = NSEntityDescription.entityForName("Information", inManagedObjectContext: managedObjectContext)
+//        
+//        //Get the ManagedObject
+//        
+//        var title = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: managedObjectContext) as? Information
+//        
+//        //Set the ManagedObject Value for key
+//        
+//        title?.ids = 1
+//        title?.creatTime = "2012.3.4"
+//        
+//        
+//        var error = NSErrorPointer.init()
+//        
+//        //Save content
+//        if(managedObjectContext.save(error) == nil){
+//            
+//        }
+//        
+//        Get data from the CoreData
+//        
+//        
+//        
+//        var fetchRequest = NSFetchRequest(entityName: "Notes")
+//        
+//        
+//        var error: NSError?
+//        
+//        var fetchResults = managedObjectContext.executeFetchRequest(fetchRequest, error: &error) as? [NSManagedObject]
+//        
+//        if let results = fetchResults{
+//
+//            var  notes = results
+//            
+//        }else{
+//            
+//           print(error)
+//            
+//        }
+    
+        
+        let alt = UIAlertView.init(title: "数据保存", message: "是否保存到本地", delegate: self, cancelButtonTitle: "取消", otherButtonTitles: "保存")
+        alt.show()
+    }
+    
+    func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
+        if buttonIndex == 1 {
+            print("保存本地")
+            let altshow = UIAlertView.init(title: "保存本地成功", message: "", delegate: nil, cancelButtonTitle: "确定")
+            altshow.show()
+            
+            print("元组\(zzwData)")
+            print("总钱数\(self.zjeMoney)")
+            print("消费金额\(self.xfMonery)")
+            print("剩余金额\(self.syMonery)")
+            print("消费时间\(self.xfTime)")
+            
         }
     }
     

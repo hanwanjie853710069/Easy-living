@@ -41,6 +41,9 @@ let ClearColor = UIColor.clearColor()
 ///  通知ID
 let theTotalAmountIds = "NotificationIdentifier"
 
+///  获取appdelegate
+let Appdel = UIApplication.sharedApplication().delegate;
+
 ///  定义UIImage对象
 func UIImageName(name:String) ->UIImage{ return UIImage(named: name)! }
 
@@ -123,9 +126,6 @@ func paytextFieldDidBeginEditingTextField(textField :UITextField){
     }
 }
 
-func hanwanjie(){
-
-}
 
 
 

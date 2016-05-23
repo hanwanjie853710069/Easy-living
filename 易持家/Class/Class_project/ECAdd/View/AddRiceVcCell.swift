@@ -10,9 +10,13 @@ import UIKit
 //代理通知主界面数据改变
 protocol dataChangeDelegate : NSObjectProtocol {
     func changeDataFunc(textFiled:UITextField)
+    func changeDataTextViewFunc(textView:UITextView)
 }
 
-class AddRiceVcCell: UITableViewCell ,UITextFieldDelegate{
+class AddRiceVcCell:
+    UITableViewCell,
+    UITextFieldDelegate,
+    UITextViewDelegate{
     
     var delegate :dataChangeDelegate!
     let nameLabel = UILabel()
@@ -94,6 +98,7 @@ class AddRiceVcCell: UITableViewCell ,UITextFieldDelegate{
         noteTextView.font = UIFont.systemFontOfSize(14)
         noteTextView.backgroundColor = LightGrayBgColor
         noteTextView.text = "Say something!"
+        noteTextView.delegate = self
         noteTextView.autoPinEdge(.Left, toEdge: .Right, ofView: moodLabel, withOffset: 10)
         noteTextView.autoPinEdge(.Top, toEdge: .Bottom, ofView: lineLabel, withOffset: 0)
         noteTextView.autoPinEdgeToSuperviewEdge(.Bottom)
@@ -111,6 +116,10 @@ class AddRiceVcCell: UITableViewCell ,UITextFieldDelegate{
     
     func textFieldDidBeginEditing(textField: UITextField) {
         paytextFieldDidBeginEditingTextField(textField)
+    }
+    
+    func textViewDidEndEditing(textView: UITextView) {
+         self.delegate?.changeDataTextViewFunc(textView)
     }
     
     func runColorW(){

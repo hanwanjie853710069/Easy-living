@@ -23,7 +23,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let tabBar = CMBaseTabBarController()
         self.window?.rootViewController = tabBar
         
-        
         return true
     }
 

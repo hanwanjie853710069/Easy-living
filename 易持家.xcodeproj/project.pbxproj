@@ -53,6 +53,8 @@
 		6A4704551CF04A32002741F1 /* AddToCalculateVcCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A4704541CF04A32002741F1 /* AddToCalculateVcCell.swift */; };
 		6A4704571CF0725C002741F1 /* ECLookCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A4704561CF0725C002741F1 /* ECLookCell.swift */; };
 		6A4704591CF07B63002741F1 /* ELCheckTheDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A4704581CF07B63002741F1 /* ELCheckTheDetailsVC.swift */; };
+		6AC1F2381CF2EAD200B6C753 /* Information+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AC1F2351CF2EAD200B6C753 /* Information+CoreDataProperties.m */; };
+		6AC1F2391CF2EAD200B6C753 /* Information.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AC1F2371CF2EAD200B6C753 /* Information.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -134,6 +136,10 @@
 		6A4704541CF04A32002741F1 /* AddToCalculateVcCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddToCalculateVcCell.swift; sourceTree = "<group>"; };
 		6A4704561CF0725C002741F1 /* ECLookCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ECLookCell.swift; sourceTree = "<group>"; };
 		6A4704581CF07B63002741F1 /* ELCheckTheDetailsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ELCheckTheDetailsVC.swift; sourceTree = "<group>"; };
+		6AC1F2341CF2EAD200B6C753 /* Information+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Information+CoreDataProperties.h"; sourceTree = "<group>"; };
+		6AC1F2351CF2EAD200B6C753 /* Information+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Information+CoreDataProperties.m"; sourceTree = "<group>"; };
+		6AC1F2361CF2EAD200B6C753 /* Information.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Information.h; sourceTree = "<group>"; };
+		6AC1F2371CF2EAD200B6C753 /* Information.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Information.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -343,6 +349,10 @@
 				6A1CE08D1CEE96570096D618 /* LaunchScreen.storyboard */,
 				6A1CE0901CEE96570096D618 /* Info.plist */,
 				6A1CE0881CEE96570096D618 /* ___.xcdatamodeld */,
+				6AC1F2341CF2EAD200B6C753 /* Information+CoreDataProperties.h */,
+				6AC1F2351CF2EAD200B6C753 /* Information+CoreDataProperties.m */,
+				6AC1F2361CF2EAD200B6C753 /* Information.h */,
+				6AC1F2371CF2EAD200B6C753 /* Information.m */,
 				6A1CE0DC1CEEACBC0096D618 /* ELHeard.h */,
 			);
 			path = "Supporting Files";
@@ -695,6 +705,7 @@
 				6A47043E1CF021FB002741F1 /* IQKeyboardManagerConstantsInternal.swift in Sources */,
 				6A4704551CF04A32002741F1 /* AddToCalculateVcCell.swift in Sources */,
 				6A4704521CF033AF002741F1 /* Luminosity.swift in Sources */,
+				6AC1F2381CF2EAD200B6C753 /* Information+CoreDataProperties.m in Sources */,
 				6A47044F1CF033AF002741F1 /* ColorDefinition.swift in Sources */,
 				6A47043C1CF021FB002741F1 /* IQUIWindow+Hierarchy.swift in Sources */,
 				6A4704411CF021FB002741F1 /* IQTextView.swift in Sources */,
@@ -704,6 +715,7 @@
 				6A1CE0F91CEED91C0096D618 /* ELHomePageVC.swift in Sources */,
 				6A4704391CF021FB002741F1 /* IQUITextFieldView+Additions.swift in Sources */,
 				6A4704441CF021FB002741F1 /* IQTitleBarButtonItem.swift in Sources */,
+				6AC1F2391CF2EAD200B6C753 /* Information.m in Sources */,
 				6A1CE0BD1CEE98520096D618 /* CMBaseTabBarController.swift in Sources */,
 				6A4704401CF021FB002741F1 /* IQKeyboardReturnKeyHandler.swift in Sources */,
 				6A1CE0C51CEEA3740096D618 /* CustomBackButton.swift in Sources */,

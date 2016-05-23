@@ -52,7 +52,6 @@ extension ELLookVC{
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
-//       CMBaseNavigationController(rootViewController: self.navigationController!).pushViewController(ELCheckTheDetailsVC(), animated: true)
         self.navigationController?.pushViewController(ELCheckTheDetailsVC(), animated: true)
     }
     

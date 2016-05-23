@@ -14,7 +14,6 @@ class CMBaseNavigationController: UINavigationController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         creatUI()
     }
     
@@ -48,7 +47,7 @@ class CMBaseNavigationController: UINavigationController {
         if 0 < self.viewControllers.count {
             viewController.hidesBottomBarWhenPushed = true
         }
-        super.pushViewController(viewController, animated: true)
+       super.pushViewController(viewController, animated: true)
     }
     
     func pushViewController(viewController: UIViewController, animated: Bool ,titleLabel:String) {
