@@ -21,10 +21,55 @@ extension ELCheckTheDetailsVC{
     }
     
     func rightBtn(btnItem: UIBarButtonItem){
+        UIApplication.sharedApplication().keyWindow!.endEditing(true)
         if  btnItem.title == "编辑" {
-           self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(title: "完成", style: .Plain, target: self, action: #selector(self.rightBtn))
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(title: "完成", style: .Plain, target: self, action: #selector(self.rightBtn))
+            self.ModifyBool = true
+            self.tableView.reloadData()
         }else{
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(title: "编辑", style: .Plain, target: self, action: #selector(self.rightBtn))
+            if self.zjeMoney == "0" {
+                let altshow = UIAlertView.init(title: "请完善数据", message: "总金额不能为空/零", delegate: nil, cancelButtonTitle: "确定")
+                altshow.show()
+                return
+            }
+            let alt = UIAlertView.init(title: "数据修改", message: "是否修改", delegate: self, cancelButtonTitle: "取消", otherButtonTitles: "保存")
+            alt.show()
+        }
+    }
+    
+    func getData(){
+        
+        self.tiHuanInf = self.infDetails
+        
+        zzwData.zsMoney = self.infDetails.zsMoney!
+        zzwData.zsNote  = self.infDetails.zsNote!
+        zzwData.zwMoney = self.infDetails.zwMoney!
+        zzwData.zwNote  = self.infDetails.zwNote!
+        zzwData.wsMoney = self.infDetails.wsMoney!
+        zzwData.wsNote  = self.infDetails.wsNote!
+        /// 早中晚消费的金额
+        self.earlyMoney   = self.infDetails.zsMoney!
+        self.inTheMoney   = self.infDetails.zwMoney!
+        self.eveningMoney = self.infDetails.wsMoney!
+        /// 总金额  消费金额  剩余金额
+        self.zjeMoney = self.infDetails.zjeMoney!
+        self.xfMonery = self.infDetails.xfAllMoney!
+        self.syMonery = self.infDetails.syMoney!
+    }
+    
+    func getMonery(notification:NSNotification){
+        //获取词典中的值
+        let textFiled = notification.object as! UITextField
+        //通知的名称
+        //        let nameNotification = notification.name
+        //接收object 对象 一些信息 例如入键盘的一些信息
+        //notification.userInfo
+        if textFiled.text?.characters.count > 0 {
+            self.AddToCalculateCell.moneyRemainingLabel.text = String(Float(textFiled.text!)! - Float(self.AddToCalculateCell.moneyAllLabel.text!)!)
+            self.syMonery = self.AddToCalculateCell.moneyRemainingLabel.text!
+            self.zjeMoney = textFiled.text!
+            self.tiHuanInf.syMoney = self.syMonery
+            self.tiHuanInf.zjeMoney = self.zjeMoney
         }
     }
     
@@ -49,39 +94,168 @@ extension ELCheckTheDetailsVC{
         }
         if indexPath.row == 4 {
             let cell =  AddToCalculateVcCell.cellFor(tableView)
-            cell.userInteractionEnabled = false
-            cell.moneyAllLabel.text = infDetails.xfAllMoney
-            cell.moneyTextFlied.text = infDetails.zjeMoney
-            cell.moneyRemainingLabel.text = infDetails.syMoney
+            if self.ModifyBool {
+                cell.userInteractionEnabled = true
+            }else{
+                cell.userInteractionEnabled = false
+                cell.moneyAllLabel.text = tiHuanInf.xfAllMoney
+                cell.moneyTextFlied.text = tiHuanInf.zjeMoney
+                cell.moneyRemainingLabel.text = tiHuanInf.syMoney
+            }
+            
             self.AddToCalculateCell = cell
             return cell
         }
         let cell =  AddRiceVcCell.cellFor(tableView)
         cell.nameLabel.text = dataArray[indexPath.row - 1]
         cell.amountTextFile.tag = 100 + indexPath.row
-        cell.userInteractionEnabled = false
-        switch indexPath.row {
-        case 1:
-            cell.amountTextFile.text = infDetails.zsMoney
-            cell.noteTextView.text = infDetails.zsNote
-        case 2:
-            cell.amountTextFile.text = infDetails.zwMoney
-            cell.noteTextView.text = infDetails.zwNote
-        case 3:
-            cell.amountTextFile.text = infDetails.wsMoney
-            cell.noteTextView.text = infDetails.wsNote
-        default:
-            print("")
+        cell.delegate = self
+        if self.ModifyBool {
+            cell.userInteractionEnabled = true
+        }else{
+            cell.userInteractionEnabled = false
+            
+            switch indexPath.row {
+            case 1:
+                cell.amountTextFile.text = tiHuanInf.zsMoney
+                cell.noteTextView.text = tiHuanInf.zsNote
+            case 2:
+                cell.amountTextFile.text = tiHuanInf.zwMoney
+                cell.noteTextView.text = tiHuanInf.zwNote
+            case 3:
+                cell.amountTextFile.text = tiHuanInf.wsMoney
+                cell.noteTextView.text = tiHuanInf.wsNote
+            default:
+                print("")
+            }
         }
         
         return cell
     }
+    
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
         if cell.respondsToSelector(Selector("setSeparatorInset:")) {
             cell.separatorInset = UIEdgeInsetsZero
         }
         if cell.respondsToSelector(Selector("setLayoutMargins:")) {
             cell.layoutMargins = UIEdgeInsetsZero
+        }
+    }
+    
+    //textFiled输入结束后调用
+    func changeDataFunc(anyObject: UITextField) {
+        
+        switch anyObject.tag {
+        case 101:
+            self.earlyMoney = "0"
+            if anyObject.text?.characters.count > 0 {
+                self.earlyMoney = (anyObject.text)!
+                zzwData.zsMoney = anyObject.text!
+                self.tiHuanInf.zsMoney = anyObject.text!
+            }else{
+                self.earlyMoney = "0"
+                zzwData.zsMoney = "0"
+                self.tiHuanInf.zsMoney = "0"
+            }
+        case 102:
+            self.inTheMoney = "0"
+            if anyObject.text?.characters.count > 0 {
+                self.inTheMoney = (anyObject.text)!
+                zzwData.zwMoney = anyObject.text!
+                self.tiHuanInf.zwMoney = anyObject.text!
+            }else{
+                self.inTheMoney = "0"
+                zzwData.zwMoney = "0"
+                self.tiHuanInf.zwMoney = "0"
+            }
+        case 103:
+            self.eveningMoney = "0"
+            if anyObject.text?.characters.count > 0 {
+                self.eveningMoney = (anyObject.text)!
+                zzwData.wsMoney = anyObject.text!
+                self.tiHuanInf.wsMoney = anyObject.text!
+            }else{
+                self.eveningMoney = "0"
+                zzwData.wsMoney = "0"
+                self.tiHuanInf.wsMoney = "0"
+            }
+        default:
+            print("")
+        }
+        
+        self.AddToCalculateCell.moneyAllLabel.text = String(Float(self.earlyMoney)! + Float(self.inTheMoney)! + Float(self.eveningMoney)!)
+        self.xfMonery = self.AddToCalculateCell.moneyAllLabel.text!
+        if self.AddToCalculateCell.moneyTextFlied.text?.characters.count > 0 {
+            self.AddToCalculateCell.moneyRemainingLabel.text = String(Float(self.AddToCalculateCell.moneyTextFlied.text!)! - Float(self.AddToCalculateCell.moneyAllLabel.text!)!)
+            self.syMonery = self.AddToCalculateCell.moneyRemainingLabel.text!
+            self.zjeMoney = self.AddToCalculateCell.moneyTextFlied.text!
+            self.tiHuanInf.syMoney = self.syMonery
+            self.tiHuanInf.zjeMoney = self.zjeMoney
+            self.tiHuanInf.xfAllMoney = self.xfMonery
+        }
+    }
+    
+    //textView输入结束后调用
+    func changeDataTextViewFunc(anyObject: UITextView){
+        
+        switch anyObject.tag {
+        case 201:
+            if anyObject.text?.characters.count > 0 {
+                zzwData.zsNote = anyObject.text!
+                self.tiHuanInf.zsNote = anyObject.text!
+            }else{
+                zzwData.zsNote = "0"
+                self.tiHuanInf.zsNote = "0"
+            }
+        case 202:
+            if anyObject.text?.characters.count > 0 {
+                zzwData.zwNote = anyObject.text!
+                self.tiHuanInf.zwNote = anyObject.text!
+            }else{
+                zzwData.zsNote = "0"
+                self.tiHuanInf.zsNote = "0"
+            }
+        case 203:
+            if anyObject.text?.characters.count > 0 {
+                zzwData.wsNote = anyObject.text!
+                self.tiHuanInf.wsNote = anyObject.text!
+            }else{
+                zzwData.zsNote = "0"
+                self.tiHuanInf.zsNote = "0"
+            }
+        default:
+            print("")
+        }
+    }
+    
+    func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
+        if buttonIndex == 1 {
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(title: "编辑", style: .Plain, target: self, action: #selector(self.rightBtn))
+            self.ModifyBool = false
+            self.tableView.reloadData()
+            
+            ///  存储数据
+            modifyTheInterformationData(zzwData.zsMoney,
+                                        zsNote: zzwData.zsNote,
+                                        zwMoney: zzwData.zwMoney,
+                                        zwNote: zzwData.zwNote,
+                                        wsMoney: zzwData.wsMoney,
+                                        wsNote: zzwData.wsNote,
+                                        zjeMoney: self.zjeMoney,
+                                        xfMonery: self.xfMonery,
+                                        syMonery: self.syMonery,
+                                        xfTime: self.infDetails.xfTime!,
+                                        cjTime: self.infDetails.creatTime!)
+            
+            self.infDetails = self.tiHuanInf
+            
+        }else{
+            
+            self.tiHuanInf = self.infDetails
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(title: "编辑", style: .Plain, target: self, action: #selector(self.rightBtn))
+            self.ModifyBool = false
+            self.tableView.reloadData()
+            
         }
     }
     

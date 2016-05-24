@@ -119,3 +119,54 @@ func deleteInformationData(reattTimeIds: String) ->Bool{
     
     return false
 }
+
+/// 向数据表Information删除数据
+func modifyTheInterformationData(zsMoney: String ,
+                              zsNote:  String ,
+                              zwMoney: String ,
+                              zwNote:  String ,
+                              wsMoney: String ,
+                              wsNote:  String ,
+                              zjeMoney:String ,
+                              xfMonery:String ,
+                              syMonery:String ,
+                              xfTime:  String ,
+                              cjTime:  String ) ->Bool{
+    //查询操作
+    do {
+        let fetchedObjects:[AnyObject]? = try managedObjectContext.executeFetchRequest(getNSFetchRequest())
+        
+        //遍历查询的结果
+        for inf:Information in fetchedObjects as! [Information]{
+            if inf.creatTime == cjTime {
+                inf.syMoney    = syMonery
+                inf.wsMoney    = wsMoney
+                inf.wsNote     = wsNote
+                inf.xfAllMoney = xfMonery
+                inf.zjeMoney   = zjeMoney
+                inf.zsMoney    = zsMoney
+                inf.zsNote     = zsNote
+                inf.zwMoney    = zwMoney
+                inf.zwNote     = zwNote
+            }
+        }
+        
+    }
+    catch {
+        fatalError("修改失败：\(error)")
+    }
+    
+    do{
+        //重新保存-更新到数据库
+        try managedObjectContext.save()
+        let altshow = UIAlertView.init(title: "修改成功", message: "", delegate: nil, cancelButtonTitle: "确定")
+        altshow.show()
+        return true
+    }catch {
+        fatalError("重新保存-更新到数据库：\(error)")
+        let altshow = UIAlertView.init(title: "修改失败", message: "\(error)", delegate: nil, cancelButtonTitle: "确定")
+        altshow.show()
+    }
+    
+    return false
+}

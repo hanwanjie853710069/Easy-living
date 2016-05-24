@@ -10,7 +10,7 @@ import UIKit
 
 class ELLookVC: CMBaseViewController,
     UITableViewDelegate,
-UITableViewDataSource{
+    UITableViewDataSource{
     
     lazy var tableView : UITableView = {
         let tabV = UITableView.init(frame: self.view.bounds)
