@@ -1,0 +1,121 @@
+//
+//  CoreDataAddAndDelete.swift
+//  易持家
+//
+//  Created by 王木木 on 16/5/24.
+//  Copyright © 2016年 王木木. All rights reserved.
+//
+
+import Foundation
+
+/// 向数据表Information添加数据
+func insertInterformationData(zsMoney: String ,
+                              zsNote:  String ,
+                              zwMoney: String ,
+                              zwNote:  String ,
+                              wsMoney: String ,
+                              wsNote:  String ,
+                              zjeMoney:String ,
+                              xfMonery:String ,
+                              syMonery:String ,
+                              xfTime:  String){
+    
+    
+    
+    let inf = NSEntityDescription.insertNewObjectForEntityForName("Information",
+                                                                  inManagedObjectContext: managedObjectContext) as! Information
+    
+    inf.creatTime  = String(NSDate().timeIntervalSince1970)
+    inf.ids        = 1
+    inf.syMoney    = syMonery
+    inf.wsMoney    = wsMoney
+    inf.wsNote     = wsNote
+    inf.xfAllMoney = xfMonery
+    inf.xfTime     = xfTime
+    inf.zjeMoney   = zjeMoney
+    inf.zsMoney    = zsMoney
+    inf.zsNote     = zsNote
+    inf.zwMoney    = zwMoney
+    inf.zwNote     = zwNote
+    //保存
+    do {
+        try managedObjectContext.save()
+        print("保存成功！")
+        let altshow = UIAlertView.init(title: "保存本地成功", message: "", delegate: nil, cancelButtonTitle: "确定")
+        altshow.show()
+        
+    } catch {
+        fatalError("不能保存：\(error)")
+        let altshow = UIAlertView.init(title: "保存本地失败", message: "\(error)", delegate: nil, cancelButtonTitle: "确定")
+        altshow.show()
+    }
+}
+
+/// 向数据表Information查询数据
+func queryDataInformation() ->[Information]{
+    
+    var arrayData = [Information]()
+    //查询操作
+    do {
+        let fetchedObjects:[AnyObject]? = try managedObjectContext.executeFetchRequest(getNSFetchRequest())
+        
+        //遍历查询的结果
+        for info:Information in fetchedObjects as! [Information]{
+            arrayData.append(info)
+        }
+        
+    }
+    catch {
+        fatalError("查询失败：\(error)")
+        let altshow = UIAlertView.init(title: "查询失败", message: "\(error)", delegate: nil, cancelButtonTitle: "确定")
+        altshow.show()
+    }
+    return arrayData
+}
+
+///  获取NSFetchRequest对象
+func getNSFetchRequest() ->NSFetchRequest{
+    //声明数据的请求
+    let fetchRequest:NSFetchRequest = NSFetchRequest()
+    
+    //声明一个实体结构
+    let entity:NSEntityDescription? = NSEntityDescription.entityForName("Information",
+                                                                        inManagedObjectContext: managedObjectContext)
+    //设置数据请求的实体结构
+    fetchRequest.entity = entity
+    return fetchRequest
+}
+
+/// 向数据表Information删除数据 yes 成功   no失败
+func deleteInformationData(reattTimeIds: String) ->Bool{
+    //查询操作
+    do {
+        let fetchedObjects:[AnyObject]? = try managedObjectContext.executeFetchRequest(getNSFetchRequest())
+        
+        //遍历查询的结果
+        for info:Information in fetchedObjects as! [Information]{
+            if info.creatTime == reattTimeIds {
+                let altshow = UIAlertView.init(title: "删除成功", message: "", delegate: nil, cancelButtonTitle: "确定")
+                altshow.show()
+                //删除对象
+                managedObjectContext.deleteObject(info)
+                return true
+            }
+        }
+        
+    }
+    catch {
+        fatalError("删除失败：\(error)")
+        let altshow = UIAlertView.init(title: "删除失败", message: "\(error)", delegate: nil, cancelButtonTitle: "确定")
+        altshow.show()
+    }
+    
+    do{
+        //重新保存-更新到数据库
+        try managedObjectContext.save()
+    }catch {
+        fatalError("重新保存-更新到数据库：\(error)")
+    }
+    
+    return false
+}

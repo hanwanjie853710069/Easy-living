@@ -44,11 +44,15 @@ let theTotalAmountIds = "NotificationIdentifier"
 ///  获取appdelegate
 let Appdel = UIApplication.sharedApplication().delegate;
 
+///  获取管理的数据上下文 对象 managedObjectContext
+let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
+
 ///  定义UIImage对象
 func UIImageName(name:String) ->UIImage{ return UIImage(named: name)! }
 
 ///  获取当去本地系统时间
 func getLocalTime() -> String {
+
     let date = NSDate()
     let timeFormatter = NSDateFormatter()
     timeFormatter.dateFormat = "yyy-MM-dd  '^_^'  HH:mm:ss"

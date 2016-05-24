@@ -21,24 +21,25 @@ class ELAddVC:
         tabV.delegate = self
         tabV.dataSource = self
         tabV.tableFooterView = UIView()
+        tabV.showsVerticalScrollIndicator = false
         return tabV
     }()
     
     let dataArray = ["早",
                      "中",
                      "晚"]
-        /// 早中晚消费的金额及备注
+    /// 早中晚消费的金额及备注
     var zzwData = (zsMoney: "0",zsNote: "",
                    zwMoney: "0",zwNote: "",
                    wsMoney: "0",wsNote: "")
     
-        /// 早中晚消费的金额
+    /// 早中晚消费的金额
     var earlyMoney = "0"
     var inTheMoney = "0"
     var eveningMoney = "0"
-        /// 消费时间
+    /// 消费时间
     var xfTime = getLocalTime()
-        /// 总金额  消费金额  剩余金额
+    /// 总金额  消费金额  剩余金额
     var zjeMoney = "0"
     var xfMonery = "0"
     var syMonery = "0"
@@ -132,11 +133,11 @@ extension ELAddVC{
     }
     
     func getTheTotalAmount(notification:NSNotification){
-    
+        
         //获取词典中的值
         let textFiled = notification.object as! UITextField
         //通知的名称
-//        let nameNotification = notification.name
+        //        let nameNotification = notification.name
         //接收object 对象 一些信息 例如入键盘的一些信息
         //notification.userInfo
         if textFiled.text?.characters.count > 0 {
@@ -157,34 +158,34 @@ extension ELAddVC{
     
     //textFiled输入结束后调用
     func changeDataFunc(anyObject: UITextField) {
-    
-            switch anyObject.tag {
-            case 101:
-                self.earlyMoney = "0"
-                if anyObject.text?.characters.count > 0 {
-                 self.earlyMoney = (anyObject.text)!
-                    zzwData.zsMoney = anyObject.text!
-                }
-            case 102:
-                self.inTheMoney = "0"
-                if anyObject.text?.characters.count > 0 {
-                    self.inTheMoney = (anyObject.text)!
-                    zzwData.zwMoney = anyObject.text!
-                }
-            case 103:
-                self.eveningMoney = "0"
-                if anyObject.text?.characters.count > 0 {
-                    self.eveningMoney = (anyObject.text)!
-                    zzwData.wsMoney = anyObject.text!
-                }
-            default:
-                 print("")
+        
+        switch anyObject.tag {
+        case 101:
+            self.earlyMoney = "0"
+            if anyObject.text?.characters.count > 0 {
+                self.earlyMoney = (anyObject.text)!
+                zzwData.zsMoney = anyObject.text!
             }
+        case 102:
+            self.inTheMoney = "0"
+            if anyObject.text?.characters.count > 0 {
+                self.inTheMoney = (anyObject.text)!
+                zzwData.zwMoney = anyObject.text!
+            }
+        case 103:
+            self.eveningMoney = "0"
+            if anyObject.text?.characters.count > 0 {
+                self.eveningMoney = (anyObject.text)!
+                zzwData.wsMoney = anyObject.text!
+            }
+        default:
+            print("")
+        }
         
         self.AddToCalculateCell.moneyAllLabel.text = String(Float(self.earlyMoney)! + Float(self.inTheMoney)! + Float(self.eveningMoney)!)
         self.xfMonery = self.AddToCalculateCell.moneyAllLabel.text!
         if self.AddToCalculateCell.moneyTextFlied.text?.characters.count > 0 {
-             self.AddToCalculateCell.moneyRemainingLabel.text = String(Float(self.AddToCalculateCell.moneyTextFlied.text!)! - Float(self.AddToCalculateCell.moneyAllLabel.text!)!)
+            self.AddToCalculateCell.moneyRemainingLabel.text = String(Float(self.AddToCalculateCell.moneyTextFlied.text!)! - Float(self.AddToCalculateCell.moneyAllLabel.text!)!)
             self.syMonery = self.AddToCalculateCell.moneyRemainingLabel.text!
             self.zjeMoney = self.AddToCalculateCell.moneyTextFlied.text!
         }
@@ -212,55 +213,11 @@ extension ELAddVC{
     }
     
     func creatCoreData(){
-        
-//        //It's necessary to code these two rows if you want to use CoreData
-//        
-//        var applicationDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-//        
-//        var managedObjectContext = applicationDelegate.managedObjectContext
-//        
-//        //Get the entity by entityName
-//        
-//        var entity = NSEntityDescription.entityForName("Information", inManagedObjectContext: managedObjectContext)
-//        
-//        //Get the ManagedObject
-//        
-//        var title = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: managedObjectContext) as? Information
-//        
-//        //Set the ManagedObject Value for key
-//        
-//        title?.ids = 1
-//        title?.creatTime = "2012.3.4"
-//        
-//        
-//        var error = NSErrorPointer.init()
-//        
-//        //Save content
-//        if(managedObjectContext.save(error) == nil){
-//            
-//        }
-//        
-//        Get data from the CoreData
-//        
-//        
-//        
-//        var fetchRequest = NSFetchRequest(entityName: "Notes")
-//        
-//        
-//        var error: NSError?
-//        
-//        var fetchResults = managedObjectContext.executeFetchRequest(fetchRequest, error: &error) as? [NSManagedObject]
-//        
-//        if let results = fetchResults{
-//
-//            var  notes = results
-//            
-//        }else{
-//            
-//           print(error)
-//            
-//        }
-    
+        if self.zjeMoney == "0" {
+            let altshow = UIAlertView.init(title: "请完善数据", message: "总金额不能为空/零", delegate: nil, cancelButtonTitle: "确定")
+            altshow.show()
+            return
+        }
         
         let alt = UIAlertView.init(title: "数据保存", message: "是否保存到本地", delegate: self, cancelButtonTitle: "取消", otherButtonTitles: "保存")
         alt.show()
@@ -268,16 +225,17 @@ extension ELAddVC{
     
     func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
         if buttonIndex == 1 {
-            print("保存本地")
-            let altshow = UIAlertView.init(title: "保存本地成功", message: "", delegate: nil, cancelButtonTitle: "确定")
-            altshow.show()
-            
-            print("元组\(zzwData)")
-            print("总钱数\(self.zjeMoney)")
-            print("消费金额\(self.xfMonery)")
-            print("剩余金额\(self.syMonery)")
-            print("消费时间\(self.xfTime)")
-            
+            ///  存储数据
+           insertInterformationData(zzwData.zsMoney,
+                                    zsNote: zzwData.zsNote,
+                                    zwMoney: zzwData.zwMoney,
+                                    zwNote: zzwData.zwNote,
+                                    wsMoney: zzwData.wsMoney,
+                                    wsNote: zzwData.wsNote,
+                                    zjeMoney: self.zjeMoney,
+                                    xfMonery: self.xfMonery,
+                                    syMonery: self.syMonery,
+                                    xfTime: self.xfTime)  
         }
     }
     
