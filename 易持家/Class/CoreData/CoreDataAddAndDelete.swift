@@ -120,7 +120,7 @@ func deleteInformationData(reattTimeIds: String) ->Bool{
     return false
 }
 
-/// 向数据表Information删除数据
+/// 向数据表Information修改数据
 func modifyTheInterformationData(zsMoney: String ,
                               zsNote:  String ,
                               zwMoney: String ,

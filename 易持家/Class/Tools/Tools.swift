@@ -47,6 +47,9 @@ let Appdel = UIApplication.sharedApplication().delegate;
 ///  获取管理的数据上下文 对象 managedObjectContext
 let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
 
+//获取天气地址
+let weather = "https://api.heweather.com/x3/weather?cityid=CN101010100&key=457b9c98179048ebb19bc0e147cf67e6"
+
 ///  定义UIImage对象
 func UIImageName(name:String) ->UIImage{ return UIImage(named: name)! }
 

@@ -25,9 +25,9 @@ class CMBaseNavigationController: UINavigationController {
                                                             NSFontAttributeName: UIFont(name: "Arial-BoldMT", size: 16.0)!]
         
         if SystemVersion < Float(7) {
-            self.navigationBar.tintColor = LightGrayBgColor
+            self.navigationBar.tintColor = DarkGrayTextColor
         }else{
-            self.navigationBar.barTintColor = LightGrayBgColor
+            self.navigationBar.barTintColor = MainColore
         }
         
     }
