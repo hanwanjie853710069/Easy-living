@@ -1,6 +1,6 @@
 //
 //  Weather+CoreDataProperties.swift
-//  易持家
+//  EasyLiving
 //
 //  Created by 王木木 on 16/5/26.
 //  Copyright © 2016年 王木木. All rights reserved.
@@ -14,11 +14,12 @@ import CoreData
 
 extension Weather {
 
-    @NSManaged var city: String?
     @NSManaged var baiDay: String?
-    @NSManaged var wanDay: String?
+    @NSManaged var city: String?
+    @NSManaged var clothes: String?
     @NSManaged var maxTemperature: String?
     @NSManaged var minTemperature: String?
-    @NSManaged var clothes: String?
+    @NSManaged var wanDay: String?
+    @NSManaged var information: Information?
 
 }

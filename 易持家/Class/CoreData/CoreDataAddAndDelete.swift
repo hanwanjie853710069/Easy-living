@@ -37,17 +37,21 @@ func insertInterformationData(zsMoney: String ,
     inf.zsNote     = zsNote
     inf.zwMoney    = zwMoney
     inf.zwNote     = zwNote
+    inf.weather    = queryDataWeather()
+    let weatherr = queryDataWeatherObject()
+    inf.weathers = NSSet(object: weatherr)
+    
     //保存
     do {
         try managedObjectContext.save()
         print("保存成功！")
-        let altshow = UIAlertView.init(title: "保存本地成功", message: "", delegate: nil, cancelButtonTitle: "确定")
-        altshow.show()
-        
+        let alertController = UIAlertController(title: "数据保存成功",
+                                                message: nil, preferredStyle: .Alert)
+        let cancelAction = UIAlertAction(title: "确定", style: .Cancel, handler: nil)
+        alertController.addAction(cancelAction)
+        UIApplication.sharedApplication().keyWindow?.rootViewController!.presentViewController(alertController, animated: true, completion: nil)
     } catch {
         fatalError("不能保存：\(error)")
-        let altshow = UIAlertView.init(title: "保存本地失败", message: "\(error)", delegate: nil, cancelButtonTitle: "确定")
-        altshow.show()
     }
 }
 
@@ -61,14 +65,15 @@ func queryDataInformation() ->[Information]{
         
         //遍历查询的结果
         for info:Information in fetchedObjects as! [Information]{
-            arrayData.append(info)
+            arrayData.insert(info, atIndex: 0)
+            //            let temp =   info.weathers?.allObjects as! [Weather]
+            //            for  aa in temp {
+            //                print(aa.baiDay)
+            //            }
         }
-        
     }
     catch {
         fatalError("查询失败：\(error)")
-        let altshow = UIAlertView.init(title: "查询失败", message: "\(error)", delegate: nil, cancelButtonTitle: "确定")
-        altshow.show()
     }
     return arrayData
 }
@@ -95,8 +100,6 @@ func deleteInformationData(reattTimeIds: String) ->Bool{
         //遍历查询的结果
         for info:Information in fetchedObjects as! [Information]{
             if info.creatTime == reattTimeIds {
-                let altshow = UIAlertView.init(title: "删除成功", message: "", delegate: nil, cancelButtonTitle: "确定")
-                altshow.show()
                 //删除对象
                 managedObjectContext.deleteObject(info)
                 return true
@@ -106,8 +109,6 @@ func deleteInformationData(reattTimeIds: String) ->Bool{
     }
     catch {
         fatalError("删除失败：\(error)")
-        let altshow = UIAlertView.init(title: "删除失败", message: "\(error)", delegate: nil, cancelButtonTitle: "确定")
-        altshow.show()
     }
     
     do{
@@ -159,13 +160,9 @@ func modifyTheInterformationData(zsMoney: String ,
     do{
         //重新保存-更新到数据库
         try managedObjectContext.save()
-        let altshow = UIAlertView.init(title: "修改成功", message: "", delegate: nil, cancelButtonTitle: "确定")
-        altshow.show()
         return true
     }catch {
         fatalError("重新保存-更新到数据库：\(error)")
-        let altshow = UIAlertView.init(title: "修改失败", message: "\(error)", delegate: nil, cancelButtonTitle: "确定")
-        altshow.show()
     }
     
     return false
@@ -189,12 +186,16 @@ func insertWeatherData(baiDay        : String ,
     weather.maxTemperature = maxTemperature
     weather.minTemperature = minTemperature
     weather.wanDay = wanDay
-    let panduan = try? managedObjectContext.save()
-    print(panduan)
+    do{
+        try managedObjectContext.save()
+    }catch{
+        print("\(error)")
+    }
 }
 
+///  向Weather表中查询数据 返回天气信息
 func queryDataWeather() ->String{
-
+    
     //声明数据的请求
     let fetchRequest:NSFetchRequest = NSFetchRequest()
     //声明一个实体结构
@@ -207,9 +208,37 @@ func queryDataWeather() ->String{
     //遍历查询的结果
     for inf:Weather in fetchedObjects as! [Weather]{
         let weather = inf.city! + " 白天:" + inf.baiDay! + "  夜晚:" + inf.wanDay! + "  最高温度:" + inf.maxTemperature! + "  最低温度:" + inf.minTemperature! + "  穿衣推荐:" + inf.clothes!
-        
-        return weather
         print(inf)
+        return weather
+        
     }
-return "没有获取到天气数据"
+    return "没有获取到天气数据"
 }
+
+///  向Weather表中查询数据 返回 Weather对象
+func queryDataWeatherObject() ->Weather{
+    
+    let weather = NSEntityDescription.insertNewObjectForEntityForName("Weather", inManagedObjectContext: managedObjectContext) as! Weather
+    
+    //声明数据的请求
+    let fetchRequest:NSFetchRequest = NSFetchRequest()
+    //声明一个实体结构
+    let entity:NSEntityDescription? = NSEntityDescription.entityForName("Weather",
+                                                                        inManagedObjectContext: managedObjectContext)
+    //设置数据请求的实体结构
+    fetchRequest.entity = entity
+    
+    let fetchedObjects:[AnyObject]? = try? managedObjectContext.executeFetchRequest(fetchRequest)
+    //遍历查询的结果
+    for inf:Weather in fetchedObjects as! [Weather]{
+        weather.baiDay = inf.baiDay
+        weather.city = inf.city
+        weather.clothes = inf.clothes
+        weather.maxTemperature = inf.maxTemperature
+        weather.minTemperature = inf.minTemperature
+        weather.wanDay = inf.wanDay
+        return weather
+    }
+    return Weather()
+}
+

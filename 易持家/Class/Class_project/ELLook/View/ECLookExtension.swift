@@ -90,6 +90,8 @@ extension ELCheckTheDetailsVC{
             cell.userInteractionEnabled = false
             cell.initBack { (selectIndex) in}
             cell.timeBtn.setTitle(infDetails.xfTime, forState: .Normal)
+            cell.rollingLabel.text = self.infDetails.weather
+            print(self.infDetails.weather)
             return cell
         }
         if indexPath.row == 4 {

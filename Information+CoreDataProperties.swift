@@ -1,8 +1,8 @@
 //
 //  Information+CoreDataProperties.swift
-//  易持家
+//  EasyLiving
 //
-//  Created by 王木木 on 16/5/24.
+//  Created by 王木木 on 16/5/26.
 //  Copyright © 2016年 王木木. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -26,5 +26,7 @@ extension Information {
     @NSManaged var zsNote: String?
     @NSManaged var zwMoney: String?
     @NSManaged var zwNote: String?
+    @NSManaged var weather: String?
+    @NSManaged var weathers: NSSet?
 
 }

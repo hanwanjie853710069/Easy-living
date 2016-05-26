@@ -82,7 +82,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             dict[NSLocalizedDescriptionKey] = "Failed to initialize the application's saved data"
             dict[NSLocalizedFailureReasonErrorKey] = failureReason
             
-            dict[NSUnderlyingErrorKey] = error as NSError
+            dict[NSUnderlyingErrorKey] = error as! NSError
             let wrappedError = NSError(domain: "YOUR_ERROR_DOMAIN", code: 9999, userInfo: dict)
             // Replace this with code to handle the error appropriately.
             // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
@@ -137,14 +137,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             if data != nil {
                 let json : AnyObject! = try? NSJSONSerialization
                     .JSONObjectWithData(data!, options:NSJSONReadingOptions.AllowFragments)
-                print(json)
-                
                 let array = json["HeWeather data service 3.0"] as? NSArray
                 let dict = array![0]
                 //城市名称
                 let city = dict["basic"]!!["city"] as! String
                 //白天天气情况
-                let baiDayarray = dict["daily_forecast"]!![0]
+                let baiDaya = dict["daily_forecast"] as! NSArray
+                let baiDayarray = baiDaya[0]
                 let baiDay = baiDayarray["cond"]!!["txt_d"] as! String
                 //晚上天气情况
                 let wanDay = baiDayarray["cond"]!!["txt_n"] as! String
@@ -161,9 +160,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                   maxTemperature: max,
                                   minTemperature: min,
                                   wanDay: wanDay)
-                
-                
-//                let content = NSString(data: data!, encoding: NSUTF8StringEncoding)
                 
             }
         }
