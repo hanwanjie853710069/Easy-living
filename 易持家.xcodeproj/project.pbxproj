@@ -53,6 +53,8 @@
 		6A4704551CF04A32002741F1 /* AddToCalculateVcCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A4704541CF04A32002741F1 /* AddToCalculateVcCell.swift */; };
 		6A4704571CF0725C002741F1 /* ECLookCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A4704561CF0725C002741F1 /* ECLookCell.swift */; };
 		6A4704591CF07B63002741F1 /* ELCheckTheDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A4704581CF07B63002741F1 /* ELCheckTheDetailsVC.swift */; };
+		6AB41A5B1CF68F0F00FB0BBF /* Weather+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AB41A591CF68F0F00FB0BBF /* Weather+CoreDataProperties.swift */; };
+		6AB41A5C1CF68F0F00FB0BBF /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AB41A5A1CF68F0F00FB0BBF /* Weather.swift */; };
 		6AD107741CF42B6300EA46A5 /* ECLookExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AD107731CF42B6300EA46A5 /* ECLookExtension.swift */; };
 		6AF345611CF403820089F0C0 /* Information+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AF3455F1CF403820089F0C0 /* Information+CoreDataProperties.swift */; };
 		6AF345621CF403820089F0C0 /* Information.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AF345601CF403820089F0C0 /* Information.swift */; };
@@ -138,6 +140,8 @@
 		6A4704541CF04A32002741F1 /* AddToCalculateVcCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddToCalculateVcCell.swift; sourceTree = "<group>"; };
 		6A4704561CF0725C002741F1 /* ECLookCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ECLookCell.swift; sourceTree = "<group>"; };
 		6A4704581CF07B63002741F1 /* ELCheckTheDetailsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ELCheckTheDetailsVC.swift; sourceTree = "<group>"; };
+		6AB41A591CF68F0F00FB0BBF /* Weather+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Weather+CoreDataProperties.swift"; path = "../../../Weather+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		6AB41A5A1CF68F0F00FB0BBF /* Weather.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Weather.swift; path = ../../../Weather.swift; sourceTree = "<group>"; };
 		6AD107731CF42B6300EA46A5 /* ECLookExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ECLookExtension.swift; sourceTree = "<group>"; };
 		6AF3455F1CF403820089F0C0 /* Information+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Information+CoreDataProperties.swift"; path = "../../../Information+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		6AF345601CF403820089F0C0 /* Information.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Information.swift; path = ../../../Information.swift; sourceTree = "<group>"; };
@@ -564,6 +568,8 @@
 		6AF345631CF407590089F0C0 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				6AB41A591CF68F0F00FB0BBF /* Weather+CoreDataProperties.swift */,
+				6AB41A5A1CF68F0F00FB0BBF /* Weather.swift */,
 				6AF3455F1CF403820089F0C0 /* Information+CoreDataProperties.swift */,
 				6AF345601CF403820089F0C0 /* Information.swift */,
 				6AF345651CF41BFA0089F0C0 /* CoreDataAddAndDelete.swift */,
@@ -703,6 +709,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6AB41A5C1CF68F0F00FB0BBF /* Weather.swift in Sources */,
 				6A1CE0F31CEED9150096D618 /* ELLookVC.swift in Sources */,
 				6A1CE0BB1CEE98170096D618 /* CMBaseNavigationController.swift in Sources */,
 				6A1CE1051CEF147D0096D618 /* AddRiceVcCell.swift in Sources */,
@@ -720,6 +727,7 @@
 				6A4704521CF033AF002741F1 /* Luminosity.swift in Sources */,
 				6A47044F1CF033AF002741F1 /* ColorDefinition.swift in Sources */,
 				6A47043C1CF021FB002741F1 /* IQUIWindow+Hierarchy.swift in Sources */,
+				6AB41A5B1CF68F0F00FB0BBF /* Weather+CoreDataProperties.swift in Sources */,
 				6A4704411CF021FB002741F1 /* IQTextView.swift in Sources */,
 				6A4704501CF033AF002741F1 /* Hue.swift in Sources */,
 				6A4704371CF021FB002741F1 /* IQNSArray+Sort.swift in Sources */,

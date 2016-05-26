@@ -12,11 +12,17 @@ class AddTimeVcCell: UITableViewCell {
     
     var timer: NSTimer!
     
+    var rollingLabel:UILabel = {
+       let label = UILabel.init(frame: CGRectMake(ScreenWidth, 65, ScreenWidth/2, 30))
+        label.text = "北京  晴   北风 2-3级  注意添加衣物"
+        return label
+    }()
+    
     lazy var timeBtn :UIButton = {
         let btn = UIButton()
         btn.backgroundColor = UIColor.whiteColor()
         btn.setTitle(getLocalTime(), forState: .Normal)
-        btn.setTitleColor(LightGrayTextColor, forState: .Normal)
+        btn.setTitleColor(UIColor.brownColor(), forState: .Normal)
         btn.titleLabel?.textAlignment = .Center
         btn.addTarget(self, action: #selector(self.addTime), forControlEvents: .TouchUpInside)
         return btn
@@ -35,7 +41,7 @@ class AddTimeVcCell: UITableViewCell {
             cell?.selectionStyle = .None
         }
         return cell!
-    }
+}
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -44,7 +50,7 @@ class AddTimeVcCell: UITableViewCell {
     
     func creatUI(){
         
-        timer =  NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(self.runColor), userInfo: nil, repeats: true)
+        timer =  NSTimer.scheduledTimerWithTimeInterval(0.3, target: self, selector: #selector(self.runColor), userInfo: nil, repeats: true)
         
         let nameLabel = UILabel()
         nameLabel.text = "消费日期"
@@ -61,6 +67,9 @@ class AddTimeVcCell: UITableViewCell {
         self.timeBtn.autoPinEdgeToSuperviewEdge(.Right)
         self.timeBtn.autoPinEdge(.Top, toEdge: .Bottom, ofView: nameLabel, withOffset: 0)
         self.timeBtn.autoSetDimension(.Height, toSize: 30)
+        
+        self.addSubview(self.rollingLabel)
+        self.addSubview(self.rollingLabel)
     }
     
     func addTime(){
@@ -73,8 +82,13 @@ class AddTimeVcCell: UITableViewCell {
     }
     
     func runColor(){
-        timeBtn.setTitleColor(randomColor(hue: .Random, luminosity: .Random), forState: .Normal)
+//        timeBtn.setTitleColor(randomColor(hue: .Random, luminosity: .Random), forState: .Normal)
 //        timeBtn.backgroundColor = randomColor(hue: .Random, luminosity: .Random)
+        self.rollingLabel.textColor = randomColor(hue: .Random, luminosity: .Random)
+        self.rollingLabel.frame.origin.x -= 5
+        if self.rollingLabel.frame.origin.x < -ScreenWidth/2 {
+            self.rollingLabel.frame.origin.x = ScreenWidth
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {

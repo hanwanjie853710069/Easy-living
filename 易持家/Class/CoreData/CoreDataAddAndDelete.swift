@@ -122,16 +122,16 @@ func deleteInformationData(reattTimeIds: String) ->Bool{
 
 /// 向数据表Information修改数据
 func modifyTheInterformationData(zsMoney: String ,
-                              zsNote:  String ,
-                              zwMoney: String ,
-                              zwNote:  String ,
-                              wsMoney: String ,
-                              wsNote:  String ,
-                              zjeMoney:String ,
-                              xfMonery:String ,
-                              syMonery:String ,
-                              xfTime:  String ,
-                              cjTime:  String ) ->Bool{
+                                 zsNote:  String ,
+                                 zwMoney: String ,
+                                 zwNote:  String ,
+                                 wsMoney: String ,
+                                 wsNote:  String ,
+                                 zjeMoney:String ,
+                                 xfMonery:String ,
+                                 syMonery:String ,
+                                 xfTime:  String ,
+                                 cjTime:  String ) ->Bool{
     //查询操作
     do {
         let fetchedObjects:[AnyObject]? = try managedObjectContext.executeFetchRequest(getNSFetchRequest())
@@ -169,4 +169,44 @@ func modifyTheInterformationData(zsMoney: String ,
     }
     
     return false
+}
+
+
+
+///  向Weather表插入数据
+func insertWeatherData(baiDay        : String ,
+                       city          : String ,
+                       clothes       : String ,
+                       maxTemperature: String ,
+                       minTemperature: String ,
+                       wanDay        : String){
+    
+    let weather = NSEntityDescription.insertNewObjectForEntityForName("Weather",
+                                                                      inManagedObjectContext: managedObjectContext) as! Weather
+    weather.baiDay = baiDay
+    weather.city = city
+    weather.clothes = clothes
+    weather.maxTemperature = maxTemperature
+    weather.minTemperature = minTemperature
+    weather.wanDay = wanDay
+    let panduan = try? managedObjectContext.save()
+    print(panduan)
+}
+
+func queryDataWeather() ->Weather{
+    let weather = Weather()
+    //声明数据的请求
+    let fetchRequest:NSFetchRequest = NSFetchRequest()
+    //声明一个实体结构
+    let entity:NSEntityDescription? = NSEntityDescription.entityForName("Weather",
+                                                                        inManagedObjectContext: managedObjectContext)
+    //设置数据请求的实体结构
+    fetchRequest.entity = entity
+    
+    let fetchedObjects:[AnyObject]? = try? managedObjectContext.executeFetchRequest(fetchRequest)
+    //遍历查询的结果
+    for inf:Weather in fetchedObjects as! [Weather]{
+        print(inf)
+    }
+return weather
 }

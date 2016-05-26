@@ -125,6 +125,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         req.HTTPMethod = "GET"
         NSURLConnection.sendAsynchronousRequest(req, queue: NSOperationQueue.mainQueue()) {
             (response, data, error) -> Void in
+            if response == nil{
+            print("未获取到爱天气数据")
+                return
+            }
             let res = response as! NSHTTPURLResponse
             print(res.statusCode)
             if error != nil{
@@ -137,8 +141,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 
                 let array = json["HeWeather data service 3.0"] as? NSArray
                 let dict = array![0]
-                let shuj = dict["aqi"]
-                print(shuj);
+                //城市名称
+                let city = dict["basic"]!!["city"] as! String
+                //白天天气情况
+                let baiDayarray = dict["daily_forecast"]!![0]
+                let baiDay = baiDayarray["cond"]!!["txt_d"] as! String
+                //晚上天气情况
+                let wanDay = baiDayarray["cond"]!!["txt_n"] as! String
+                //最高温度
+                let max = baiDayarray["tmp"]!!["max"] as! String
+                //最低温度
+                let min = baiDayarray["tmp"]!!["min"] as! String
+                //穿衣推荐
+                let clothes = dict["suggestion"]!!["drsg"]!!["txt"] as! String
+                //存储数据到本地
+                insertWeatherData(baiDay,
+                                  city: city,
+                                  clothes: clothes,
+                                  maxTemperature: max,
+                                  minTemperature: min,
+                                  wanDay: wanDay)
+                
                 
 //                let content = NSString(data: data!, encoding: NSUTF8StringEncoding)
                 

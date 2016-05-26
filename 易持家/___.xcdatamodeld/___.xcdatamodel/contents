@@ -14,7 +14,16 @@
         <attribute name="zwMoney" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="zwNote" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
+    <entity name="Weather" representedClassName=".Weather" syncable="YES">
+        <attribute name="baiDay" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="city" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="clothes" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="maxTemperature" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="minTemperature" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="wanDay" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <elements>
         <element name="Information" positionX="-54" positionY="-9" width="128" height="225"/>
+        <element name="Weather" positionX="-54" positionY="81" width="128" height="135"/>
     </elements>
 </model>
