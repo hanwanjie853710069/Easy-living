@@ -83,6 +83,7 @@ extension ELAddVC{
             cell.initBack { (selectIndex) in
                 self.creatDatePickView(cell.timeBtn)
             }
+            cell.rollingLabel.text = queryDataWeather()
             return cell
         }
         if indexPath.row == 4 {

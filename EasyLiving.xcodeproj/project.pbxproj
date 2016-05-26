@@ -79,16 +79,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		6A1CE07E1CEE96560096D618 /* 易持家.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "易持家.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6A1CE07E1CEE96560096D618 /* EasyLiving.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EasyLiving.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A1CE0861CEE96570096D618 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		6A1CE0891CEE96570096D618 /* ___.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "___.xcdatamodel"; sourceTree = "<group>"; };
 		6A1CE08B1CEE96570096D618 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../Assets.xcassets; sourceTree = "<group>"; };
 		6A1CE08E1CEE96570096D618 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6A1CE0901CEE96570096D618 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../Info.plist; sourceTree = "<group>"; };
-		6A1CE0951CEE96570096D618 /* 易持家Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "易持家Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6A1CE0951CEE96570096D618 /* EasyLiving.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EasyLiving.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A1CE0991CEE96570096D618 /* ___Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "___Tests.swift"; sourceTree = "<group>"; };
 		6A1CE09B1CEE96570096D618 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6A1CE0A01CEE96570096D618 /* 易持家UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "易持家UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6A1CE0A01CEE96570096D618 /* EasyLiving.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EasyLiving.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A1CE0A41CEE96570096D618 /* ___UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "___UITests.swift"; sourceTree = "<group>"; };
 		6A1CE0A61CEE96570096D618 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6A1CE0BA1CEE98170096D618 /* CMBaseNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CMBaseNavigationController.swift; sourceTree = "<group>"; };
@@ -187,9 +187,9 @@
 		6A1CE07F1CEE96560096D618 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				6A1CE07E1CEE96560096D618 /* 易持家.app */,
-				6A1CE0951CEE96570096D618 /* 易持家Tests.xctest */,
-				6A1CE0A01CEE96570096D618 /* 易持家UITests.xctest */,
+				6A1CE07E1CEE96560096D618 /* EasyLiving.app */,
+				6A1CE0951CEE96570096D618 /* EasyLiving.xctest */,
+				6A1CE0A01CEE96570096D618 /* EasyLiving.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -580,9 +580,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		6A1CE07D1CEE96560096D618 /* 易持家 */ = {
+		6A1CE07D1CEE96560096D618 /* EasyLiving */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6A1CE0A91CEE96570096D618 /* Build configuration list for PBXNativeTarget "易持家" */;
+			buildConfigurationList = 6A1CE0A91CEE96570096D618 /* Build configuration list for PBXNativeTarget "EasyLiving" */;
 			buildPhases = (
 				6A1CE07A1CEE96560096D618 /* Sources */,
 				6A1CE07B1CEE96560096D618 /* Frameworks */,
@@ -592,14 +592,14 @@
 			);
 			dependencies = (
 			);
-			name = "易持家";
+			name = EasyLiving;
 			productName = "易持家";
-			productReference = 6A1CE07E1CEE96560096D618 /* 易持家.app */;
+			productReference = 6A1CE07E1CEE96560096D618 /* EasyLiving.app */;
 			productType = "com.apple.product-type.application";
 		};
-		6A1CE0941CEE96570096D618 /* 易持家Tests */ = {
+		6A1CE0941CEE96570096D618 /* EasyLivingTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6A1CE0AC1CEE96570096D618 /* Build configuration list for PBXNativeTarget "易持家Tests" */;
+			buildConfigurationList = 6A1CE0AC1CEE96570096D618 /* Build configuration list for PBXNativeTarget "EasyLivingTests" */;
 			buildPhases = (
 				6A1CE0911CEE96570096D618 /* Sources */,
 				6A1CE0921CEE96570096D618 /* Frameworks */,
@@ -610,14 +610,14 @@
 			dependencies = (
 				6A1CE0971CEE96570096D618 /* PBXTargetDependency */,
 			);
-			name = "易持家Tests";
+			name = EasyLivingTests;
 			productName = "易持家Tests";
-			productReference = 6A1CE0951CEE96570096D618 /* 易持家Tests.xctest */;
+			productReference = 6A1CE0951CEE96570096D618 /* EasyLiving.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		6A1CE09F1CEE96570096D618 /* 易持家UITests */ = {
+		6A1CE09F1CEE96570096D618 /* EasyLivingUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6A1CE0AF1CEE96570096D618 /* Build configuration list for PBXNativeTarget "易持家UITests" */;
+			buildConfigurationList = 6A1CE0AF1CEE96570096D618 /* Build configuration list for PBXNativeTarget "EasyLivingUITests" */;
 			buildPhases = (
 				6A1CE09C1CEE96570096D618 /* Sources */,
 				6A1CE09D1CEE96570096D618 /* Frameworks */,
@@ -628,9 +628,9 @@
 			dependencies = (
 				6A1CE0A21CEE96570096D618 /* PBXTargetDependency */,
 			);
-			name = "易持家UITests";
+			name = EasyLivingUITests;
 			productName = "易持家UITests";
-			productReference = 6A1CE0A01CEE96570096D618 /* 易持家UITests.xctest */;
+			productReference = 6A1CE0A01CEE96570096D618 /* EasyLiving.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -656,7 +656,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 6A1CE0791CEE96560096D618 /* Build configuration list for PBXProject "易持家" */;
+			buildConfigurationList = 6A1CE0791CEE96560096D618 /* Build configuration list for PBXProject "EasyLiving" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -669,9 +669,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				6A1CE07D1CEE96560096D618 /* 易持家 */,
-				6A1CE0941CEE96570096D618 /* 易持家Tests */,
-				6A1CE09F1CEE96570096D618 /* 易持家UITests */,
+				6A1CE07D1CEE96560096D618 /* EasyLiving */,
+				6A1CE0941CEE96570096D618 /* EasyLivingTests */,
+				6A1CE09F1CEE96570096D618 /* EasyLivingUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -779,12 +779,12 @@
 /* Begin PBXTargetDependency section */
 		6A1CE0971CEE96570096D618 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 6A1CE07D1CEE96560096D618 /* 易持家 */;
+			target = 6A1CE07D1CEE96560096D618 /* EasyLiving */;
 			targetProxy = 6A1CE0961CEE96570096D618 /* PBXContainerItemProxy */;
 		};
 		6A1CE0A21CEE96570096D618 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 6A1CE07D1CEE96560096D618 /* 易持家 */;
+			target = 6A1CE07D1CEE96560096D618 /* EasyLiving */;
 			targetProxy = 6A1CE0A11CEE96570096D618 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -901,7 +901,7 @@
 				INFOPLIST_FILE = "易持家/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.shuhuasoft.Intelli;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = EasyLiving;
 				SWIFT_OBJC_BRIDGING_HEADER = "易持家/Supporting Files/ELHeard.h";
 			};
 			name = Debug;
@@ -913,7 +913,7 @@
 				INFOPLIST_FILE = "易持家/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.shuhuasoft.Intelli;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = EasyLiving;
 				SWIFT_OBJC_BRIDGING_HEADER = "易持家/Supporting Files/ELHeard.h";
 			};
 			name = Release;
@@ -925,8 +925,8 @@
 				INFOPLIST_FILE = "易持家Tests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "wmm.---Tests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/易持家.app/易持家";
+				PRODUCT_NAME = EasyLiving;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EasyLiving.app/EasyLiving";
 			};
 			name = Debug;
 		};
@@ -937,8 +937,8 @@
 				INFOPLIST_FILE = "易持家Tests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "wmm.---Tests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/易持家.app/易持家";
+				PRODUCT_NAME = EasyLiving;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EasyLiving.app/EasyLiving";
 			};
 			name = Release;
 		};
@@ -948,7 +948,7 @@
 				INFOPLIST_FILE = "易持家UITests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "wmm.---UITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = EasyLiving;
 				TEST_TARGET_NAME = "易持家";
 			};
 			name = Debug;
@@ -959,7 +959,7 @@
 				INFOPLIST_FILE = "易持家UITests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "wmm.---UITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = EasyLiving;
 				TEST_TARGET_NAME = "易持家";
 			};
 			name = Release;
@@ -967,7 +967,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		6A1CE0791CEE96560096D618 /* Build configuration list for PBXProject "易持家" */ = {
+		6A1CE0791CEE96560096D618 /* Build configuration list for PBXProject "EasyLiving" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6A1CE0A71CEE96570096D618 /* Debug */,
@@ -976,7 +976,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6A1CE0A91CEE96570096D618 /* Build configuration list for PBXNativeTarget "易持家" */ = {
+		6A1CE0A91CEE96570096D618 /* Build configuration list for PBXNativeTarget "EasyLiving" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6A1CE0AA1CEE96570096D618 /* Debug */,
@@ -985,7 +985,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6A1CE0AC1CEE96570096D618 /* Build configuration list for PBXNativeTarget "易持家Tests" */ = {
+		6A1CE0AC1CEE96570096D618 /* Build configuration list for PBXNativeTarget "EasyLivingTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6A1CE0AD1CEE96570096D618 /* Debug */,
@@ -994,7 +994,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6A1CE0AF1CEE96570096D618 /* Build configuration list for PBXNativeTarget "易持家UITests" */ = {
+		6A1CE0AF1CEE96570096D618 /* Build configuration list for PBXNativeTarget "EasyLivingUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6A1CE0B01CEE96570096D618 /* Debug */,

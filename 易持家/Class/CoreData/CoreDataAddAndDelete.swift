@@ -193,8 +193,8 @@ func insertWeatherData(baiDay        : String ,
     print(panduan)
 }
 
-func queryDataWeather() ->Weather{
-    let weather = Weather()
+func queryDataWeather() ->String{
+
     //声明数据的请求
     let fetchRequest:NSFetchRequest = NSFetchRequest()
     //声明一个实体结构
@@ -206,7 +206,10 @@ func queryDataWeather() ->Weather{
     let fetchedObjects:[AnyObject]? = try? managedObjectContext.executeFetchRequest(fetchRequest)
     //遍历查询的结果
     for inf:Weather in fetchedObjects as! [Weather]{
+        let weather = inf.city! + " 白天:" + inf.baiDay! + "  夜晚:" + inf.wanDay! + "  最高温度:" + inf.maxTemperature! + "  最低温度:" + inf.minTemperature! + "  穿衣推荐:" + inf.clothes!
+        
+        return weather
         print(inf)
     }
-return weather
+return "没有获取到天气数据"
 }

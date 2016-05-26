@@ -11,10 +11,12 @@ import UIKit
 class AddTimeVcCell: UITableViewCell {
     
     var timer: NSTimer!
+    var number = 0
     
     var rollingLabel:UILabel = {
-       let label = UILabel.init(frame: CGRectMake(ScreenWidth, 65, ScreenWidth/2, 30))
-        label.text = "北京  晴   北风 2-3级  注意添加衣物"
+       let label = UILabel.init(frame: CGRectMake(ScreenWidth, 70, ScreenWidth/2, 30))
+        label.text = queryDataWeather()
+      label.sizeToFit()
         return label
     }()
     
@@ -50,7 +52,7 @@ class AddTimeVcCell: UITableViewCell {
     
     func creatUI(){
         
-        timer =  NSTimer.scheduledTimerWithTimeInterval(0.3, target: self, selector: #selector(self.runColor), userInfo: nil, repeats: true)
+        timer =  NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: #selector(self.runColor), userInfo: nil, repeats: true)
         
         let nameLabel = UILabel()
         nameLabel.text = "消费日期"
@@ -84,11 +86,15 @@ class AddTimeVcCell: UITableViewCell {
     func runColor(){
 //        timeBtn.setTitleColor(randomColor(hue: .Random, luminosity: .Random), forState: .Normal)
 //        timeBtn.backgroundColor = randomColor(hue: .Random, luminosity: .Random)
-        self.rollingLabel.textColor = randomColor(hue: .Random, luminosity: .Random)
-        self.rollingLabel.frame.origin.x -= 5
-        if self.rollingLabel.frame.origin.x < -ScreenWidth/2 {
-            self.rollingLabel.frame.origin.x = ScreenWidth
+        number += 1
+        if number%10 == 0 {
+           self.rollingLabel.textColor = randomColor(hue: .Random, luminosity: .Random) 
         }
+        
+        self.rollingLabel.frame.origin.x -= 5
+            if self.rollingLabel.frame.origin.x < -self.rollingLabel.frame.size.width {
+                self.rollingLabel.frame = CGRectMake(ScreenWidth, 70, self.rollingLabel.frame.size.width, 30)
+            }
     }
     
     required init?(coder aDecoder: NSCoder) {
