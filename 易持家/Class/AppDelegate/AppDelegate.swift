@@ -23,6 +23,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let tabBar = CMBaseTabBarController()
         self.window?.rootViewController = tabBar
         
+        let ducumentPath2 = NSHomeDirectory() + "/Documents"
+        print(ducumentPath2)
+        
         return true
     }
     
@@ -45,7 +48,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidBecomeActive(application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
         ///  获取天气预报
-        getWeather(weather)
+        if (cityids == nil) {
+            getTheWeatherInformation("CN101010100") { (AnyObject) in}
+        }else{
+            getTheWeatherInformation(cityids) { (AnyObject) in}
+        }
     }
     
     func applicationWillTerminate(application: UIApplication) {
@@ -113,54 +120,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 let nserror = error as NSError
                 NSLog("Unresolved error \(nserror), \(nserror.userInfo)")
                 abort()
-            }
-        }
-    }
-    
-    
-    func getWeather(httpUrl:String) {
-        
-        let req = NSMutableURLRequest(URL: NSURL(string: httpUrl)!)
-        req.timeoutInterval = 6
-        req.HTTPMethod = "GET"
-        NSURLConnection.sendAsynchronousRequest(req, queue: NSOperationQueue.mainQueue()) {
-            (response, data, error) -> Void in
-            if response == nil{
-            print("未获取到爱天气数据")
-                return
-            }
-            let res = response as! NSHTTPURLResponse
-            print(res.statusCode)
-            if error != nil{
-                print("请求失败")
-            }
-            if data != nil {
-                let json : AnyObject! = try? NSJSONSerialization
-                    .JSONObjectWithData(data!, options:NSJSONReadingOptions.AllowFragments)
-                let array = json["HeWeather data service 3.0"] as? NSArray
-                let dict = array![0]
-                //城市名称
-                let city = dict["basic"]!!["city"] as! String
-                //白天天气情况
-                let baiDaya = dict["daily_forecast"] as! NSArray
-                let baiDayarray = baiDaya[0]
-                let baiDay = baiDayarray["cond"]!!["txt_d"] as! String
-                //晚上天气情况
-                let wanDay = baiDayarray["cond"]!!["txt_n"] as! String
-                //最高温度
-                let max = baiDayarray["tmp"]!!["max"] as! String
-                //最低温度
-                let min = baiDayarray["tmp"]!!["min"] as! String
-                //穿衣推荐
-                let clothes = dict["suggestion"]!!["drsg"]!!["txt"] as! String
-                //存储数据到本地
-                insertWeatherData(baiDay,
-                                  city: city,
-                                  clothes: clothes,
-                                  maxTemperature: max,
-                                  minTemperature: min,
-                                  wanDay: wanDay)
-                
             }
         }
     }

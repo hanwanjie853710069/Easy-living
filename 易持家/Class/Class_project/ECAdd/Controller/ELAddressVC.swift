@@ -9,12 +9,13 @@
 import UIKit
 
 class ELAddressVC:
-    CMBaseViewController ,
+    CMBaseViewController,
     UITableViewDelegate,
-UITableViewDataSource{
+    UITableViewDataSource,
+    UISearchBarDelegate{
     
     lazy var tableView : UITableView = {
-        let tabV = UITableView.init(frame: self.view.bounds)
+        let tabV = UITableView.init(frame: self.view.bounds, style: .Plain)
         tabV.delegate = self
         tabV.dataSource = self
         tabV.tableFooterView = UIView()
@@ -23,61 +24,27 @@ UITableViewDataSource{
         
     }()
     
+    var funcBlock = {(cityids:String ,cityName:String)->() in}
+    
     let cellid = "cellid"
-    var arrayData :NSArray?
+    var arrayData :NSMutableArray = []
+    var arrayTemp :NSMutableArray = []
+    
+    lazy var searchbar:UISearchBar = {
+    let searc = UISearchBar.init(frame: CGRectMake(0, 0, ScreenWidth, 40))
+        searc.delegate = self
+        return searc
+    }()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         // Do any additional setup after loading the view.
         self.title = "地点"
         self.view.backgroundColor = UIColor.whiteColor()
         self.view.addSubview(self.tableView)
         getData()
     }
-    
-    func getData(){
-        SVProgressHUD.showWithMaskType(.Clear)
-        getAllWeather { (anyobject) -> () in
-            SVProgressHUD.dismiss()
-            let array  = anyobject["city_info"] as?NSArray
-            self.arrayData = array
-            self.tableView.reloadData()
-            
-        }
-    }
+
 }
 
-extension ELAddressVC{
-    
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if self.arrayData != nil {
-            return self.arrayData!.count
-        }else{
-            return 0
-        }
-        
-    }
-    
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
-        var cell = tableView.dequeueReusableCellWithIdentifier(self.cellid)
-        if cell == nil {
-            cell = UITableViewCell.init(style: .Default, reuseIdentifier: self.cellid)
-        }
-        let dict = self.arrayData![indexPath.row]
-        let prov = dict["prov"] as! String
-        let city = dict["city"] as! String
-        cell!.textLabel?.text = "\(prov)   \(city)"
-        return cell!
-    }
-    
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        self.navigationController?.popViewControllerAnimated(true)
-    }
-    
-    func blockWerath(cityids:String) -> () {
-        
-    }
-}

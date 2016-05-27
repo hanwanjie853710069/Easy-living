@@ -28,12 +28,48 @@ extension ELCheckTheDetailsVC{
             self.tableView.reloadData()
         }else{
             if self.zjeMoney == "0" {
-                let altshow = UIAlertView.init(title: "请完善数据", message: "总金额不能为空/零", delegate: nil, cancelButtonTitle: "确定")
-                altshow.show()
+                SVProgressHUD.showInfoWithStatus("总金额不能为空/零")
                 return
             }
-            let alt = UIAlertView.init(title: "数据修改", message: "是否修改", delegate: self, cancelButtonTitle: "取消", otherButtonTitles: "保存")
-            alt.show()
+            
+            let alertController = UIAlertController(title: "数据修改",
+                                                    message: "是否修改", preferredStyle: .Alert)
+            let cancelAction = UIAlertAction(title: "取消", style: .Cancel, handler: {
+                action in
+                self.tiHuanInf = self.infDetails
+                self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(title: "编辑", style: .Plain, target: self, action: #selector(self.rightBtn))
+                self.ModifyBool = false
+                self.tableView.reloadData()
+            })
+            
+            let okAction = UIAlertAction(title: "确定", style: .Default,
+                                         handler: {
+                                            action in
+                                            self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(title: "编辑", style: .Plain, target: self, action: #selector(self.rightBtn))
+                                            self.ModifyBool = false
+                                            self.tableView.reloadData()
+                                            
+                                            ///  存储数据
+                                            modifyTheInterformationData(self.zzwData.zsMoney,
+                                                zsNote: self.zzwData.zsNote,
+                                                zwMoney: self.zzwData.zwMoney,
+                                                zwNote: self.zzwData.zwNote,
+                                                wsMoney: self.zzwData.wsMoney,
+                                                wsNote: self.zzwData.wsNote,
+                                                zjeMoney: self.zjeMoney,
+                                                xfMonery: self.xfMonery,
+                                                syMonery: self.syMonery,
+                                                xfTime: self.infDetails.xfTime!,
+                                                cjTime: self.infDetails.creatTime!)
+                                            
+                                            self.infDetails = self.tiHuanInf
+                                            
+            })
+            alertController.addAction(cancelAction)
+            alertController.addAction(okAction)
+            self.presentViewController(alertController, animated: true, completion: nil)
+            
+            
         }
     }
     
@@ -91,7 +127,8 @@ extension ELCheckTheDetailsVC{
             cell.initBack { (selectIndex) in}
             cell.timeBtn.setTitle(infDetails.xfTime, forState: .Normal)
             cell.rollingLabel.text = self.infDetails.weather
-            print(self.infDetails.weather)
+            let width = OCTools.getWidthWithContent(cell.rollingLabel.text!, height: 30, font: 16.0)
+            cell.rollingLabel.frame.size.width = width
             return cell
         }
         if indexPath.row == 4 {
@@ -230,37 +267,6 @@ extension ELCheckTheDetailsVC{
         }
     }
     
-    func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
-        if buttonIndex == 1 {
-            self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(title: "编辑", style: .Plain, target: self, action: #selector(self.rightBtn))
-            self.ModifyBool = false
-            self.tableView.reloadData()
-            
-            ///  存储数据
-            modifyTheInterformationData(zzwData.zsMoney,
-                                        zsNote: zzwData.zsNote,
-                                        zwMoney: zzwData.zwMoney,
-                                        zwNote: zzwData.zwNote,
-                                        wsMoney: zzwData.wsMoney,
-                                        wsNote: zzwData.wsNote,
-                                        zjeMoney: self.zjeMoney,
-                                        xfMonery: self.xfMonery,
-                                        syMonery: self.syMonery,
-                                        xfTime: self.infDetails.xfTime!,
-                                        cjTime: self.infDetails.creatTime!)
-            
-            self.infDetails = self.tiHuanInf
-            
-        }else{
-            
-            self.tiHuanInf = self.infDetails
-            self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(title: "编辑", style: .Plain, target: self, action: #selector(self.rightBtn))
-            self.ModifyBool = false
-            self.tableView.reloadData()
-            
-        }
-    }
-    
     override func viewDidLayoutSubviews() {
         if self.tableView.respondsToSelector(Selector("setSeparatorInset:")) {
             self.tableView.separatorInset = UIEdgeInsetsZero
@@ -268,12 +274,8 @@ extension ELCheckTheDetailsVC{
         if self.tableView.respondsToSelector(Selector("setLayoutMargins:")) {
             self.tableView.layoutMargins = UIEdgeInsetsZero
         }
-        
     }
-    
 }
-
-
 
 extension ELLookVC{
     
@@ -354,7 +356,5 @@ extension ELLookVC{
         super.viewWillAppear(animated)
         self.arrayData = queryDataInformation()
         self.tableView.reloadData()
-        let ducumentPath2 = NSHomeDirectory() + "/Documents"
-        print(ducumentPath2)
     }
 }

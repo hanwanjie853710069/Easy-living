@@ -17,8 +17,14 @@ extension ELAddVC{
         self.tableView.autoPinEdgeToSuperviewEdge(.Right)
         self.tableView.autoPinEdgeToSuperviewEdge(.Top)
         self.tableView.autoPinEdgeToSuperviewEdge(.Bottom)
+        var title = ""
         
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(title: "获取地点", style: .Plain, target: self, action: #selector(self.rightBtn))
+        if (city == nil) {
+            title = "获取地点"
+        }else{
+            title = city
+        }
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(title: title, style: .Plain, target: self, action: #selector(self.rightBtn))
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -39,6 +45,8 @@ extension ELAddVC{
                 self.creatDatePickView(cell.timeBtn)
             }
             cell.rollingLabel.text = queryDataWeather()
+            let width = OCTools.getWidthWithContent(cell.rollingLabel.text!, height: 30, font: 16.0)
+            cell.rollingLabel.frame.size.width = width
             return cell
         }
         if indexPath.row == 4 {
@@ -204,6 +212,15 @@ extension ELAddVC{
     
     func rightBtn(){
         let vc = ELAddressVC()
+        vc.initFuncBlock { (cityids, cityName) in
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(title: cityName, style: .Plain, target: self, action: #selector(self.rightBtn))
+            SVProgressHUD.showWithMaskType(.Clear)
+            saveWeatherInformation(cityName, cityIds: cityids)
+            getTheWeatherInformation(cityids, mathFunction: { (AnyObject) in
+                self.tableView.reloadData()
+                SVProgressHUD.dismiss()
+            })
+        }
         self.navigationController?.pushViewController(vc, animated: true)
     }
     

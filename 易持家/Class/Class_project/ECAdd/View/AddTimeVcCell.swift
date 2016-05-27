@@ -14,9 +14,9 @@ class AddTimeVcCell: UITableViewCell {
     var number = 0
     
     var rollingLabel:UILabel = {
-       let label = UILabel.init(frame: CGRectMake(ScreenWidth, 70, ScreenWidth/2, 30))
+       let label = UILabel.init(frame: CGRectMake(ScreenWidth, 70, 770, 30))
+        label.font = UIFont.systemFontOfSize(16)
         label.text = queryDataWeather()
-      label.sizeToFit()
         return label
     }()
     

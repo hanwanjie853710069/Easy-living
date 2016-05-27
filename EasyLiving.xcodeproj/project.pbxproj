@@ -54,6 +54,10 @@
 		6A2294FA1CF70AAD00C05B92 /* SVIndefiniteAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A2294F61CF70AAD00C05B92 /* SVIndefiniteAnimatedView.m */; };
 		6A2294FB1CF70AAD00C05B92 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 6A2294F71CF70AAD00C05B92 /* SVProgressHUD.bundle */; };
 		6A2294FC1CF70AAD00C05B92 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A2294F91CF70AAD00C05B92 /* SVProgressHUD.m */; };
+		6A42591F1CF7ED4E0082B61E /* ELAddRessExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A42591E1CF7ED4E0082B61E /* ELAddRessExtension.swift */; };
+		6A4259221CF7FC6D0082B61E /* OCTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A4259211CF7FC6D0082B61E /* OCTools.m */; };
+		6A4259251CF809350082B61E /* Address+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A4259231CF809350082B61E /* Address+CoreDataProperties.swift */; };
+		6A4259261CF809350082B61E /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A4259241CF809350082B61E /* Address.swift */; };
 		6A4704371CF021FB002741F1 /* IQNSArray+Sort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A4704221CF021FA002741F1 /* IQNSArray+Sort.swift */; };
 		6A4704381CF021FB002741F1 /* IQUIScrollView+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A4704231CF021FA002741F1 /* IQUIScrollView+Additions.swift */; };
 		6A4704391CF021FB002741F1 /* IQUITextFieldView+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A4704241CF021FA002741F1 /* IQUITextFieldView+Additions.swift */; };
@@ -181,6 +185,11 @@
 		6A2294F71CF70AAD00C05B92 /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
 		6A2294F81CF70AAD00C05B92 /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
 		6A2294F91CF70AAD00C05B92 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
+		6A42591E1CF7ED4E0082B61E /* ELAddRessExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ELAddRessExtension.swift; sourceTree = "<group>"; };
+		6A4259201CF7FC6D0082B61E /* OCTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCTools.h; sourceTree = "<group>"; };
+		6A4259211CF7FC6D0082B61E /* OCTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCTools.m; sourceTree = "<group>"; };
+		6A4259231CF809350082B61E /* Address+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Address+CoreDataProperties.swift"; path = "../../../Address+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		6A4259241CF809350082B61E /* Address.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Address.swift; path = ../../../Address.swift; sourceTree = "<group>"; };
 		6A4704221CF021FA002741F1 /* IQNSArray+Sort.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "IQNSArray+Sort.swift"; sourceTree = "<group>"; };
 		6A4704231CF021FA002741F1 /* IQUIScrollView+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "IQUIScrollView+Additions.swift"; sourceTree = "<group>"; };
 		6A4704241CF021FA002741F1 /* IQUITextFieldView+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "IQUITextFieldView+Additions.swift"; sourceTree = "<group>"; };
@@ -456,6 +465,8 @@
 			isa = PBXGroup;
 			children = (
 				6A1CE0EC1CEEBE1B0096D618 /* Tools.swift */,
+				6A4259201CF7FC6D0082B61E /* OCTools.h */,
+				6A4259211CF7FC6D0082B61E /* OCTools.m */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -552,6 +563,7 @@
 				6A4704541CF04A32002741F1 /* AddToCalculateVcCell.swift */,
 				6A1CE1021CEEE6A00096D618 /* DatePackerView.swift */,
 				6A2294EE1CF7019500C05B92 /* ELAddExtension.swift */,
+				6A42591E1CF7ED4E0082B61E /* ELAddRessExtension.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -711,6 +723,8 @@
 		6AF345631CF407590089F0C0 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				6A4259231CF809350082B61E /* Address+CoreDataProperties.swift */,
+				6A4259241CF809350082B61E /* Address.swift */,
 				6A2294AE1CF6E96A00C05B92 /* Information+CoreDataProperties.swift */,
 				6A2294AF1CF6E96A00C05B92 /* Information.swift */,
 				6A2294B01CF6E96A00C05B92 /* Weather+CoreDataProperties.swift */,
@@ -880,12 +894,14 @@
 				6A47043C1CF021FB002741F1 /* IQUIWindow+Hierarchy.swift in Sources */,
 				6A2294E81CF6F16B00C05B92 /* UIWebView+AFNetworking.m in Sources */,
 				6A2294E01CF6F16B00C05B92 /* AFAutoPurgingImageCache.m in Sources */,
+				6A4259221CF7FC6D0082B61E /* OCTools.m in Sources */,
 				6A4704411CF021FB002741F1 /* IQTextView.swift in Sources */,
 				6A2294F31CF7027700C05B92 /* ELAddressVC.swift in Sources */,
 				6A2294DC1CF6F16B00C05B92 /* AFSecurityPolicy.m in Sources */,
 				6A4704501CF033AF002741F1 /* Hue.swift in Sources */,
 				6A2294DB1CF6F16B00C05B92 /* AFNetworkReachabilityManager.m in Sources */,
 				6A4704371CF021FB002741F1 /* IQNSArray+Sort.swift in Sources */,
+				6A4259261CF809350082B61E /* Address.swift in Sources */,
 				6A2294E41CF6F16B00C05B92 /* UIButton+AFNetworking.m in Sources */,
 				6A4704421CF021FB002741F1 /* IQBarButtonItem.swift in Sources */,
 				6A2294B31CF6E96A00C05B92 /* Information.swift in Sources */,
@@ -896,6 +912,7 @@
 				6A2294FA1CF70AAD00C05B92 /* SVIndefiniteAnimatedView.m in Sources */,
 				6A2294E51CF6F16B00C05B92 /* UIImageView+AFNetworking.m in Sources */,
 				6A4704441CF021FB002741F1 /* IQTitleBarButtonItem.swift in Sources */,
+				6A42591F1CF7ED4E0082B61E /* ELAddRessExtension.swift in Sources */,
 				6A1CE0BD1CEE98520096D618 /* CMBaseTabBarController.swift in Sources */,
 				6A2294DA1CF6F16B00C05B92 /* AFHTTPSessionManager.m in Sources */,
 				6A4704401CF021FB002741F1 /* IQKeyboardReturnKeyHandler.swift in Sources */,
@@ -904,6 +921,7 @@
 				6A47043B1CF021FB002741F1 /* IQUIViewController+Additions.swift in Sources */,
 				6A2294DF1CF6F16B00C05B92 /* AFURLSessionManager.m in Sources */,
 				6A4704451CF021FB002741F1 /* IQToolbar.swift in Sources */,
+				6A4259251CF809350082B61E /* Address+CoreDataProperties.swift in Sources */,
 				6A4704531CF033AF002741F1 /* RandomColor.swift in Sources */,
 				6A1CE0DB1CEEAC520096D618 /* AppDelegate.swift in Sources */,
 				6A2294FC1CF70AAD00C05B92 /* SVProgressHUD.m in Sources */,

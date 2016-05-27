@@ -177,7 +177,7 @@ func insertWeatherData(baiDay        : String ,
                        maxTemperature: String ,
                        minTemperature: String ,
                        wanDay        : String){
-    
+    deleteWeatherInformation()
     let weather = NSEntityDescription.insertNewObjectForEntityForName("Weather",
                                                                       inManagedObjectContext: managedObjectContext) as! Weather
     weather.baiDay = baiDay
@@ -186,11 +186,31 @@ func insertWeatherData(baiDay        : String ,
     weather.maxTemperature = maxTemperature
     weather.minTemperature = minTemperature
     weather.wanDay = wanDay
+    
     do{
         try managedObjectContext.save()
     }catch{
         print("\(error)")
     }
+}
+
+///  删除Weather表中的所有数据
+func deleteWeatherInformation(){
+    //声明数据的请求
+    let fetchRequest:NSFetchRequest = NSFetchRequest()
+    //声明一个实体结构
+    let entity:NSEntityDescription? = NSEntityDescription.entityForName("Weather",
+                                                                        inManagedObjectContext: managedObjectContext)
+    //设置数据请求的实体结构
+    fetchRequest.entity = entity
+    
+    let fetchedObjects:[AnyObject]? = try? managedObjectContext.executeFetchRequest(fetchRequest)
+    //遍历查询的结果
+    for inf:Weather in fetchedObjects as! [Weather]{
+        //删除对象
+        managedObjectContext.deleteObject(inf)
+    }
+    Appdel.saveContext()
 }
 
 ///  向Weather表中查询数据 返回天气信息
@@ -208,7 +228,6 @@ func queryDataWeather() ->String{
     //遍历查询的结果
     for inf:Weather in fetchedObjects as! [Weather]{
         let weather = inf.city! + " 白天:" + inf.baiDay! + "  夜晚:" + inf.wanDay! + "  最高温度:" + inf.maxTemperature! + "  最低温度:" + inf.minTemperature! + "  穿衣推荐:" + inf.clothes!
-        print(inf)
         return weather
         
     }
@@ -240,5 +259,51 @@ func queryDataWeatherObject() ->Weather{
         return weather
     }
     return Weather()
+}
+
+///  存储获取到的天气地址
+func insertAddressData(array:NSMutableArray){
+    
+    for dict in array {
+        let city    = dict["city"] as! String
+        let cnty    = dict["cnty"] as! String
+        let id      = dict["id"] as! String
+        let lat     = dict["lat"] as! String
+        let lon     = dict["lon"] as! String
+        let prov    = dict["prov"] as! String
+        let address = NSEntityDescription.insertNewObjectForEntityForName("Address",
+                                                                          inManagedObjectContext: managedObjectContext) as! Address
+        address.city = city
+        address.cnty = cnty
+        address.id = id
+        address.lat = lat
+        address.lon = lon
+        address.prov = prov
+    }
+    
+    do{
+        try managedObjectContext.save()
+    }catch{
+        print("\(error)")
+    }
+}
+
+///  获取本地存储的天气地址
+func queryDataAddress() ->NSMutableArray{
+    let array: NSMutableArray = []
+    //声明数据的请求
+    let fetchRequest:NSFetchRequest = NSFetchRequest()
+    //声明一个实体结构
+    let entity:NSEntityDescription? = NSEntityDescription.entityForName("Address",
+                                                                        inManagedObjectContext: managedObjectContext)
+    //设置数据请求的实体结构
+    fetchRequest.entity = entity
+    
+    let fetchedObjects:[AnyObject]? = try? managedObjectContext.executeFetchRequest(fetchRequest)
+    //遍历查询的结果
+    for inf in fetchedObjects!{
+        array.addObject(inf)
+    }
+    return array
 }
 

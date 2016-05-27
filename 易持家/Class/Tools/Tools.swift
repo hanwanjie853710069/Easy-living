@@ -42,7 +42,7 @@ let ClearColor = UIColor.clearColor()
 let theTotalAmountIds = "NotificationIdentifier"
 
 ///  获取appdelegate
-let Appdel = UIApplication.sharedApplication().delegate;
+let Appdel = UIApplication.sharedApplication().delegate as! AppDelegate;
 
 ///  获取管理的数据上下文 对象 managedObjectContext
 let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
@@ -133,6 +133,17 @@ func paytextFieldDidBeginEditingTextField(textField :UITextField){
     }
 }
 
+///  存储选中的天气信息到本地  以备下次进入应用使用  NSUserDefaults
+func saveWeatherInformation(city:String, cityIds:String){
+    //设置存储信息
+    NSUserDefaults.standardUserDefaults().setObject(city, forKey: "city")
+    NSUserDefaults.standardUserDefaults().setObject(cityIds, forKey: "cityids")
+    //设置同步
+    NSUserDefaults.standardUserDefaults().synchronize()
+}
 
+///  读取本地存储的天气ids
+let cityids = NSUserDefaults.standardUserDefaults().valueForKey("cityids") as! String!
 
-
+///  读取本地存储的天气name
+let city = NSUserDefaults.standardUserDefaults().valueForKey("city") as! String!

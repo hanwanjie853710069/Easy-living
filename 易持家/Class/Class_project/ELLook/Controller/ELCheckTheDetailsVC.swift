@@ -12,8 +12,7 @@ class ELCheckTheDetailsVC:
     CMBaseViewController,
     dataChangeDelegate,
     UITableViewDelegate,
-    UIAlertViewDelegate,
-    UITableViewDataSource{
+UITableViewDataSource{
     
     lazy var tableView : UITableView = {
         let tabV = UITableView()
