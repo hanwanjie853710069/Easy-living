@@ -61,6 +61,23 @@ class ECLookCell: UITableViewCell {
                 self.lookLabel = label
             }
         }
+        
+        self.timeLabel.autoPinEdgeToSuperviewEdge(.Bottom)
+        self.timeLabel.autoPinEdgeToSuperviewEdge(.Top)
+        self.timeLabel.autoPinEdgeToSuperviewEdge(.Left)
+        self.timeLabel.autoSetDimension(.Width, toSize: ScreenWidth/3)
+        
+        self.lookLabel.autoPinEdgeToSuperviewEdge(.Bottom)
+        self.lookLabel.autoPinEdgeToSuperviewEdge(.Top)
+        self.lookLabel.autoPinEdgeToSuperviewEdge(.Right)
+        self.lookLabel.autoSetDimension(.Width, toSize: ScreenWidth/3)
+        
+        self.moneyLabel.autoPinEdgeToSuperviewEdge(.Bottom)
+        self.moneyLabel.autoPinEdgeToSuperviewEdge(.Top)
+        self.moneyLabel.autoAlignAxisToSuperviewAxis(.Vertical)
+        self.moneyLabel.autoSetDimension(.Width, toSize: ScreenWidth/3)
+        
+        
     }
     
     required init?(coder aDecoder: NSCoder) {

@@ -9,11 +9,12 @@
 #ifndef ELHeard_h
 #define ELHeard_h
 
-///  第三方类库
+/// 第三方类库
 #import "PureLayout.h"
 #import "UIColor+HNExtensions.h"
 #import "AFNetworking.h"
 #import "SVProgressHUD.h"
+#import "ZFChart.h"
 //本地自己创建
 #import "Information.h"
 #import "OCTools.h"

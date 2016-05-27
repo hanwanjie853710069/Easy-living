@@ -11,7 +11,7 @@ import UIKit
 class ELLookVC:
     CMBaseViewController,
     UITableViewDelegate,
-    UITableViewDataSource{
+UITableViewDataSource{
     
     lazy var tableView : UITableView = {
         let tabV = UITableView.init(frame: self.view.bounds)
@@ -21,7 +21,7 @@ class ELLookVC:
         tabV.separatorInset = UIEdgeInsetsMake(0, 20, 0, 20)
         return tabV
     }()
-      var arrayData:[Information] = {
+    var arrayData:[Information] = {
         let array = queryDataInformation()
         return array
     }()
@@ -30,6 +30,10 @@ class ELLookVC:
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.whiteColor()
         self.view.addSubview(self.tableView)
+        self.tableView.autoPinEdgeToSuperviewEdge(.Bottom)
+        self.tableView.autoPinEdgeToSuperviewEdge(.Left)
+        self.tableView.autoPinEdgeToSuperviewEdge(.Right)
+        self.tableView.autoPinEdgeToSuperviewEdge(.Top)
     }
 }
 

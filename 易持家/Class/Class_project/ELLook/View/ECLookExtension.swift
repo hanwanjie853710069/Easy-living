@@ -311,12 +311,43 @@ extension ELLookVC{
         let view = UIView.init(frame: CGRectMake(0, 0, ScreenWidth, 44))
         view.backgroundColor = UIColor.whiteColor()
         let array = ["消费日期", "消费金额", "👇"]
+        var labelOne = UILabel()
+        var labelTwo = UILabel()
+        var labelThree = UILabel()
         for temp in 0...2 {
-            let label = UILabel.init(frame: CGRectMake(CGFloat(temp)*(ScreenWidth/3), 0, ScreenWidth/3, 44))
+//            let label = UILabel.init(frame: CGRectMake(CGFloat(temp)*(ScreenWidth/3), 0, ScreenWidth/3, 44))
+            let label = UILabel()
             label.textAlignment = .Center
             label.text = array[temp]
-            view.addSubview(label)
+            switch temp {
+            case 0:
+                labelOne = label
+                view.addSubview(labelOne)
+            case 1:
+                labelTwo = label
+                view.addSubview(labelTwo)
+            default:
+                labelThree = label
+                view.addSubview(labelThree)
+            }
         }
+
+        
+        labelOne.autoPinEdgeToSuperviewEdge(.Bottom)
+        labelOne.autoPinEdgeToSuperviewEdge(.Top)
+        labelOne.autoPinEdgeToSuperviewEdge(.Left)
+        labelOne.autoSetDimension(.Width, toSize: ScreenWidth/3)
+        
+        labelThree.autoPinEdgeToSuperviewEdge(.Bottom)
+        labelThree.autoPinEdgeToSuperviewEdge(.Top)
+        labelThree.autoPinEdgeToSuperviewEdge(.Right)
+        labelThree.autoSetDimension(.Width, toSize: ScreenWidth/3)
+        
+        labelTwo.autoPinEdgeToSuperviewEdge(.Bottom)
+        labelTwo.autoPinEdgeToSuperviewEdge(.Top)
+        labelTwo.autoAlignAxisToSuperviewAxis(.Vertical)
+        labelTwo.autoSetDimension(.Width, toSize: ScreenWidth/3)
+        
         let line = UILabel()
         line.backgroundColor = GrayLineColor
         view.addSubview(line)
