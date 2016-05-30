@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6A1A7F7A1CFBC59D004C9DF5 /* ELMyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A1A7F791CFBC59D004C9DF5 /* ELMyViewController.swift */; };
 		6A1CE0871CEE96570096D618 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6A1CE0851CEE96570096D618 /* Main.storyboard */; };
 		6A1CE08A1CEE96570096D618 /* ___.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6A1CE0881CEE96570096D618 /* ___.xcdatamodeld */; };
 		6A1CE08C1CEE96570096D618 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6A1CE08B1CEE96570096D618 /* Assets.xcassets */; };
@@ -128,6 +129,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6A1A7F791CFBC59D004C9DF5 /* ELMyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ELMyViewController.swift; sourceTree = "<group>"; };
 		6A1CE07E1CEE96560096D618 /* EasyLiving.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EasyLiving.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A1CE0861CEE96570096D618 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		6A1CE0891CEE96570096D618 /* ___.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "___.xcdatamodel"; sourceTree = "<group>"; };
@@ -317,6 +319,46 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6A1A7F741CFBC578004C9DF5 /* ELMy */ = {
+			isa = PBXGroup;
+			children = (
+				6A1A7F751CFBC578004C9DF5 /* Controller */,
+				6A1A7F761CFBC578004C9DF5 /* HomeDataParser */,
+				6A1A7F771CFBC578004C9DF5 /* Model */,
+				6A1A7F781CFBC578004C9DF5 /* View */,
+			);
+			path = ELMy;
+			sourceTree = "<group>";
+		};
+		6A1A7F751CFBC578004C9DF5 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				6A1A7F791CFBC59D004C9DF5 /* ELMyViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		6A1A7F761CFBC578004C9DF5 /* HomeDataParser */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = HomeDataParser;
+			sourceTree = "<group>";
+		};
+		6A1A7F771CFBC578004C9DF5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		6A1A7F781CFBC578004C9DF5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		6A1CE0751CEE96560096D618 = {
 			isa = PBXGroup;
 			children = (
@@ -431,6 +473,7 @@
 		6A1CE0C31CEEA1F60096D618 /* Class_project */ = {
 			isa = PBXGroup;
 			children = (
+				6A1A7F741CFBC578004C9DF5 /* ELMy */,
 				6A2294E91CF6F19700C05B92 /* HTTPService */,
 				6A1CE0CC1CEEA7140096D618 /* ELLook */,
 				6A1CE0CB1CEEA7140096D618 /* ELHomePage */,
@@ -1068,6 +1111,7 @@
 				6A1CE0C01CEEA0450096D618 /* CMBaseViewController.swift in Sources */,
 				6A2294E31CF6F16B00C05B92 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				6A47043F1CF021FB002741F1 /* IQKeyboardManager.swift in Sources */,
+				6A1A7F7A1CFBC59D004C9DF5 /* ELMyViewController.swift in Sources */,
 				6A47043D1CF021FB002741F1 /* IQKeyboardManagerConstants.swift in Sources */,
 				6AAB44771CF83CD700BD124D /* ELASingleSetOfHistogramVC.swift in Sources */,
 				6A2294EF1CF7019500C05B92 /* ELAddExtension.swift in Sources */,

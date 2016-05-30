@@ -40,7 +40,13 @@ class CMBaseTabBarController: UITabBarController {
         lookVC.tabBarItem.selectedImage = UIImage(named: "set_look_select")
         let lookNa = CMBaseNavigationController(rootViewController:lookVC);
    
-        self.viewControllers = [lookNa,homeNa,addNa]
+        let myVC = ELMyViewController()
+        myVC.title = "我的"
+        myVC.tabBarItem.image = UIImage(named: "set_my")
+        myVC.tabBarItem.selectedImage = UIImage(named: "set_my_select")
+        let myNa = CMBaseNavigationController(rootViewController:myVC);
+        
+        self.viewControllers = [lookNa,homeNa,addNa,myNa]
     }
     
 }
