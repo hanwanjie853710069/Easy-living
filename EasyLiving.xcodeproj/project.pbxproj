@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2BA918610F6AFCD65C59948F /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C3E59CEF8406EA3CDCFB464 /* libPods.a */; };
 		6A1A7F7A1CFBC59D004C9DF5 /* ELMyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A1A7F791CFBC59D004C9DF5 /* ELMyViewController.swift */; };
 		6A1CE0871CEE96570096D618 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6A1CE0851CEE96570096D618 /* Main.storyboard */; };
 		6A1CE08A1CEE96570096D618 /* ___.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6A1CE0881CEE96570096D618 /* ___.xcdatamodeld */; };
@@ -108,6 +109,9 @@
 		6AAB44751CF83CC300BD124D /* ELASingleSetOfLinearGraphVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AAB44741CF83CC300BD124D /* ELASingleSetOfLinearGraphVC.swift */; };
 		6AAB44771CF83CD700BD124D /* ELASingleSetOfHistogramVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AAB44761CF83CD700BD124D /* ELASingleSetOfHistogramVC.swift */; };
 		6AD107741CF42B6300EA46A5 /* ECLookExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AD107731CF42B6300EA46A5 /* ECLookExtension.swift */; };
+		6AD87E101D01539700A8804C /* ELMyCellHeardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AD87E0F1D01539700A8804C /* ELMyCellHeardView.swift */; };
+		6AD87E121D01690000A8804C /* MyViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AD87E111D01690000A8804C /* MyViewItem.swift */; };
+		6AD87E141D01693900A8804C /* MyViewRECell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AD87E131D01693900A8804C /* MyViewRECell.swift */; };
 		6AF345661CF41BFA0089F0C0 /* CoreDataAddAndDelete.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AF345651CF41BFA0089F0C0 /* CoreDataAddAndDelete.swift */; };
 /* End PBXBuildFile section */
 
@@ -129,6 +133,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1599265197BDDF7DBEBA3E1F /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		2C3E59CEF8406EA3CDCFB464 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		5EB1FED89634B08ED0DF235B /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		6A1A7F791CFBC59D004C9DF5 /* ELMyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ELMyViewController.swift; sourceTree = "<group>"; };
 		6A1CE07E1CEE96560096D618 /* EasyLiving.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EasyLiving.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A1CE0861CEE96570096D618 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -290,6 +297,9 @@
 		6AAB44741CF83CC300BD124D /* ELASingleSetOfLinearGraphVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ELASingleSetOfLinearGraphVC.swift; sourceTree = "<group>"; };
 		6AAB44761CF83CD700BD124D /* ELASingleSetOfHistogramVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ELASingleSetOfHistogramVC.swift; sourceTree = "<group>"; };
 		6AD107731CF42B6300EA46A5 /* ECLookExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ECLookExtension.swift; sourceTree = "<group>"; };
+		6AD87E0F1D01539700A8804C /* ELMyCellHeardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ELMyCellHeardView.swift; sourceTree = "<group>"; };
+		6AD87E111D01690000A8804C /* MyViewItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyViewItem.swift; sourceTree = "<group>"; };
+		6AD87E131D01693900A8804C /* MyViewRECell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyViewRECell.swift; sourceTree = "<group>"; };
 		6AF345641CF4178C0089F0C0 /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; };
 		6AF345651CF41BFA0089F0C0 /* CoreDataAddAndDelete.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataAddAndDelete.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -299,6 +309,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2BA918610F6AFCD65C59948F /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -348,6 +359,7 @@
 		6A1A7F771CFBC578004C9DF5 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				6AD87E111D01690000A8804C /* MyViewItem.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -355,6 +367,8 @@
 		6A1A7F781CFBC578004C9DF5 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				6AD87E0F1D01539700A8804C /* ELMyCellHeardView.swift */,
+				6AD87E131D01693900A8804C /* MyViewRECell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -366,6 +380,8 @@
 				6A1CE0981CEE96570096D618 /* 易持家Tests */,
 				6A1CE0A31CEE96570096D618 /* 易持家UITests */,
 				6A1CE07F1CEE96560096D618 /* Products */,
+				B9299B5A5FA10780DBE62893 /* Pods */,
+				E2420D68D1C593817DD7DE57 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -969,6 +985,23 @@
 			path = CoreData;
 			sourceTree = "<group>";
 		};
+		B9299B5A5FA10780DBE62893 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				5EB1FED89634B08ED0DF235B /* Pods.debug.xcconfig */,
+				1599265197BDDF7DBEBA3E1F /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		E2420D68D1C593817DD7DE57 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2C3E59CEF8406EA3CDCFB464 /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -976,9 +1009,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6A1CE0A91CEE96570096D618 /* Build configuration list for PBXNativeTarget "EasyLiving" */;
 			buildPhases = (
+				5275F8CC539A7A816E8B7B99 /* Check Pods Manifest.lock */,
 				6A1CE07A1CEE96560096D618 /* Sources */,
 				6A1CE07B1CEE96560096D618 /* Frameworks */,
 				6A1CE07C1CEE96560096D618 /* Resources */,
+				8184A56CDFC70F3EC729647F /* Embed Pods Frameworks */,
+				7AC12AA188E450085438F80F /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1097,6 +1133,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		5275F8CC539A7A816E8B7B99 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		7AC12AA188E450085438F80F /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8184A56CDFC70F3EC729647F /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		6A1CE07A1CEE96560096D618 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -1118,6 +1202,7 @@
 				6AD107741CF42B6300EA46A5 /* ECLookExtension.swift in Sources */,
 				6AAB44591CF8396100BD124D /* NSString+Zirkfied.m in Sources */,
 				6A47043A1CF021FB002741F1 /* IQUIView+Hierarchy.swift in Sources */,
+				6AD87E121D01690000A8804C /* MyViewItem.swift in Sources */,
 				6AAB44651CF8396100BD124D /* ZFGenericChart.m in Sources */,
 				6A2294B21CF6E96A00C05B92 /* Information+CoreDataProperties.swift in Sources */,
 				6A1CE0E91CEEAEE10096D618 /* NSLayoutConstraint+PureLayout.m in Sources */,
@@ -1142,6 +1227,7 @@
 				6A2294F31CF7027700C05B92 /* ELAddressVC.swift in Sources */,
 				6A2294DC1CF6F16B00C05B92 /* AFSecurityPolicy.m in Sources */,
 				6A4704501CF033AF002741F1 /* Hue.swift in Sources */,
+				6AD87E101D01539700A8804C /* ELMyCellHeardView.swift in Sources */,
 				6A2294DB1CF6F16B00C05B92 /* AFNetworkReachabilityManager.m in Sources */,
 				6A4704371CF021FB002741F1 /* IQNSArray+Sort.swift in Sources */,
 				6A4259261CF809350082B61E /* Address.swift in Sources */,
@@ -1173,6 +1259,7 @@
 				6AAB44641CF8396100BD124D /* ZFYAxisLine.m in Sources */,
 				6A2294DF1CF6F16B00C05B92 /* AFURLSessionManager.m in Sources */,
 				6AAB446C1CF8396100BD124D /* ZFPopoverLabel.m in Sources */,
+				6AD87E141D01693900A8804C /* MyViewRECell.swift in Sources */,
 				6A4704451CF021FB002741F1 /* IQToolbar.swift in Sources */,
 				6AAB44751CF83CC300BD124D /* ELASingleSetOfLinearGraphVC.swift in Sources */,
 				6A4259251CF809350082B61E /* Address+CoreDataProperties.swift in Sources */,
@@ -1338,6 +1425,7 @@
 		};
 		6A1CE0AA1CEE96570096D618 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5EB1FED89634B08ED0DF235B /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "易持家/Info.plist";
@@ -1351,6 +1439,7 @@
 		};
 		6A1CE0AB1CEE96570096D618 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1599265197BDDF7DBEBA3E1F /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "易持家/Info.plist";
