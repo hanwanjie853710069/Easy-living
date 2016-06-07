@@ -1,13 +1,13 @@
 //
-//  ELHeard.h
-//  易持家
+//  Easy-living-Prefix-Header.h
+//  EasyLiving
 //
-//  Created by 王木木 on 16/5/20.
+//  Created by 王木木 on 16/6/7.
 //  Copyright © 2016年 王木木. All rights reserved.
 //
 
-#ifndef ELHeard_h
-#define ELHeard_h
+#ifndef Easy_living_Prefix_Header_h
+#define Easy_living_Prefix_Header_h
 
 /// 第三方类库
 #import "PureLayout.h"
@@ -41,4 +41,4 @@
 
 #import "TSHTMLTextView.h"
 
-#endif /* ELHeard_h */
+#endif /* Easy_living_Prefix_Header_h */

@@ -67,9 +67,7 @@ class ELMyViewController:CMBaseViewController ,RETableViewManagerDelegate{
         
         for dict in dataArray {
             
-            let item = MyViewItem.init(title: dict["name"]!, imageNameS: dict["image"]!, myItem: { (myItem) in
-                
-            })
+            let item = MyViewItem.init(title: dict["name"]!, imageNameS: dict["image"]!, myItem: { (myItem) in })
             
             section.addItem(item)
          
@@ -78,6 +76,15 @@ class ELMyViewController:CMBaseViewController ,RETableViewManagerDelegate{
         self.manager.addSection(section)
         
     }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        
+        self.navigationController?.pushViewController(ELHtmlVC(), animated: true)
+        
+    }
+    
     
     func scrollViewDidScroll(scrollView: UIScrollView) {
         
@@ -110,5 +117,4 @@ class ELMyViewController:CMBaseViewController ,RETableViewManagerDelegate{
         }
         
     }
-
 }

@@ -11,6 +11,7 @@ PODS:
   - DTFoundation/UIKit (1.7.10):
     - DTFoundation/Core
   - REFormattedNumberField (1.1.6)
+  - RegexKitLite (4.0)
   - RETableViewManager (1.5.14):
     - REFormattedNumberField (~> 1.1.5)
     - REValidation (~> 0.1.4)
@@ -18,12 +19,14 @@ PODS:
 
 DEPENDENCIES:
   - DTCoreText (~> 1.6.14)
+  - RegexKitLite
   - RETableViewManager (~> 1.5.14)
 
 SPEC CHECKSUMS:
   DTCoreText: 3ea8bba23dd2141ba18adb227a7dd33a822df1c4
   DTFoundation: 3b6b1b817d2a7fb02e7eaf2596c922a68145bd43
   REFormattedNumberField: 70fc5fb1218ebd5ee9983820defd12806d5c6ec6
+  RegexKitLite: c0e4c12e6e7de0769f3a3ed679f0f61604170661
   RETableViewManager: 317f43f31c0a5818c6257cb7544167819a8ae170
   REValidation: 38c4de1be58455f8b00aab208ac80db316a66b7f
 

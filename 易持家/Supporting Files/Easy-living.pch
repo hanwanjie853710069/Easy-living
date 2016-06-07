@@ -1,0 +1,17 @@
+//
+//  Easy-living.pch
+//  EasyLiving
+//
+//  Created by 王木木 on 16/6/7.
+//  Copyright © 2016年 王木木. All rights reserved.
+//
+
+//#ifndef Easy_living_pch
+//#define Easy_living_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#import "Easy-living-Prefix-Header.h"
+
+//#endif /* Easy_living_pch */

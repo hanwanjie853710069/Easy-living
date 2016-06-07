@@ -7,18 +7,14 @@
 //
 
 import UIKit
-
 @objc(MyViewRECell)
 class MyViewRECell: RETableViewCell {
     
     var heardImage: UIImageView!
-    
     var nameLabel:  UILabel!
-    
     var arrowImage: UIImageView!
     
     override func cellDidLoad() {
-        
         super.cellDidLoad()
         
         self.heardImage = UIImageView()
@@ -46,15 +42,10 @@ class MyViewRECell: RETableViewCell {
     override func cellWillAppear() {
      
         super.cellWillAppear()
-        
         let item = self.item as! MyViewItem
-        
         self.heardImage.image = UIImage(named: item.imageNameS)
-        
         self.nameLabel.text   = item.titleNameS
-        
         self.arrowImage.image = UIImage(named: "arrow_right")
         
     }
-    
 }
