@@ -52,5 +52,13 @@ class ELAddVC:
         creatUI()
     }
     
+    deinit{
+        
+        //删除通知
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: "NotificationIdentifier", object: nil)
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+        
+    }
+    
 }
 

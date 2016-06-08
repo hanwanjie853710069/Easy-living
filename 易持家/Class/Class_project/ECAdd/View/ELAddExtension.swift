@@ -89,7 +89,7 @@ extension ELAddVC{
     ///  创建选择时间器
     func creatDatePickView(timeBtn: UIButton){
         let dateP = DatePackerView.init(frame: CGRectMake(0, 0, ScreenWidth, ScreenHeight))
-        dateP.initTimeBack { (timeString) in
+        dateP.initTimeBack {[unowned self] (timeString) in
             timeBtn.setTitle(timeString, forState: .Normal)
             self.xfTime = timeString
         }
@@ -177,6 +177,16 @@ extension ELAddVC{
     }
     
     func creatCoreData(){
+        
+        if queryDataUser().passWord == "" {
+            
+            let na = CMBaseNavigationController.init(rootViewController: ELLoginVC())
+            
+            self.navigationController?.presentViewController(na, animated: true, completion: {})
+            
+            return
+        }
+        
         if self.zjeMoney == "0" {
             let alertController = UIAlertController(title: "请完善数据",
                                                     message: "总金额不能为空/零", preferredStyle: .Alert)
@@ -192,6 +202,7 @@ extension ELAddVC{
         let okAction = UIAlertAction(title: "确定", style: .Default,
                                      handler: {
                                         action in
+                                        
                                         ///  存储数据
                                         insertInterformationData(self.zzwData.zsMoney,
                                             zsNote: self.zzwData.zsNote,
@@ -234,9 +245,6 @@ extension ELAddVC{
         
     }
     
+    
+    
 }
-/**
- 删除通知
- NSNotificationCenter.defaultCenter().removeObserver(self, name: "NotificationIdentifier", object: nil)
- NSNotificationCenter.defaultCenter().removeObserver(self)
- */

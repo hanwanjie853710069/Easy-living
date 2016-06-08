@@ -24,6 +24,15 @@
         <attribute name="zwNote" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="weathers" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Weather" syncable="YES"/>
     </entity>
+    <entity name="User" representedClassName=".User" syncable="YES">
+        <attribute name="age" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="backgroundUrl" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="heardUrl" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="nickName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="passWord" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="sex" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="userName" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <entity name="Weather" representedClassName=".Weather" syncable="YES">
         <attribute name="baiDay" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="city" optional="YES" attributeType="String" syncable="YES"/>
@@ -34,8 +43,9 @@
         <relationship name="information" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Information" syncable="YES"/>
     </entity>
     <elements>
+        <element name="Address" positionX="-189" positionY="108" width="128" height="135"/>
         <element name="Information" positionX="-324" positionY="-9" width="128" height="253"/>
         <element name="Weather" positionX="-54" positionY="81" width="128" height="148"/>
-        <element name="Address" positionX="-189" positionY="108" width="128" height="135"/>
+        <element name="User" positionX="-189" positionY="108" width="128" height="150"/>
     </elements>
 </model>

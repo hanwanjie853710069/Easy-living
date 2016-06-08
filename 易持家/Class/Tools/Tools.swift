@@ -8,6 +8,9 @@
 
 import Foundation
 
+/// 总密码
+let passWordZ = "王木木"
+
 ///屏幕高度
 let ScreenHeight = UIScreen.mainScreen().bounds.size.height
 
@@ -55,7 +58,7 @@ func UIImageName(name:String) ->UIImage{ return UIImage(named: name)! }
 
 ///  获取当去本地系统时间
 func getLocalTime() -> String {
-
+    
     let date = NSDate()
     let timeFormatter = NSDateFormatter()
     timeFormatter.dateFormat = "yyy-MM-dd  '^_^'  HH:mm:ss"
@@ -115,7 +118,7 @@ func  paytextFieldDidEndEditingTextField(textField:UITextField){
     range.location = (textField.text?.characters.count)!-1
     let stringOne = (textField.text! as NSString).substringWithRange(range)
     if stringOne == "." {
-      let  array = textField.text?.componentsSeparatedByString(".")
+        let  array = textField.text?.componentsSeparatedByString(".")
         textField.text = array![0]
     }
 }
@@ -147,3 +150,31 @@ let cityids = NSUserDefaults.standardUserDefaults().valueForKey("cityids") as! S
 
 ///  读取本地存储的天气name
 let city = NSUserDefaults.standardUserDefaults().valueForKey("city") as! String!
+
+//通过颜色来生成一个纯色图片
+func getColorImageWithColor(color:UIColor) ->(UIImage){
+    
+    let rect = CGRectMake(0, 0, ScreenWidth, ScreenHeight)
+    
+    UIGraphicsBeginImageContext(rect.size);
+    
+    let context = UIGraphicsGetCurrentContext();
+    
+    CGContextSetFillColorWithColor(context, color.CGColor);
+    
+    CGContextFillRect(context, rect);
+    
+    let img = UIGraphicsGetImageFromCurrentImageContext();
+    
+    UIGraphicsEndImageContext();
+    
+    return img;
+    
+}
+
+
+
+
+
+
+

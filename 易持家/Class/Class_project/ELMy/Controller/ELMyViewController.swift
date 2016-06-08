@@ -39,7 +39,7 @@ class ELMyViewController:CMBaseViewController ,RETableViewManagerDelegate{
     lazy var heardView: ELMyCellHeardView = {
         
         let hV = ELMyCellHeardView.init(frame: CGRectMake(0, 64, ScreenWidth, 200),
-                                        nameLabel: "王木木",
+                                        nameLabel: queryDataUser().nickName!,
                                         heardImageUrl: "heardImage",
                                         backImage:"Iocn_El")
         
@@ -47,10 +47,10 @@ class ELMyViewController:CMBaseViewController ,RETableViewManagerDelegate{
         
     }()
     
-    let dataArray = [["name":"我的设置",   "image":"myPage_icon"],
-                     ["name":"我的收藏",   "image":"myPage_icon"],
-                     ["name":"我的做题历史","image":"myPage_icon"],
-                     ["name":"我的测试报告","image":"myPage_icon"]]
+    let dataArray = [["name":"昵称",   "image":"myPage_icon"],
+                     ["name":"性别",   "image":"myPage_icon"],
+                     ["name":"年龄","image":"myPage_icon"],
+                     ["name":"个性签名","image":"myPage_icon"]]
     
     
     override func viewDidLoad() {
@@ -70,7 +70,7 @@ class ELMyViewController:CMBaseViewController ,RETableViewManagerDelegate{
             let item = MyViewItem.init(title: dict["name"]!, imageNameS: dict["image"]!, myItem: { (myItem) in })
             
             section.addItem(item)
-         
+            
         }
         
         self.manager.addSection(section)
@@ -85,6 +85,21 @@ class ELMyViewController:CMBaseViewController ,RETableViewManagerDelegate{
         
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if queryDataUser().passWord == "" {
+            
+            self.navigationController?.tabBarController?.selectedIndex = 2
+            
+            let na = CMBaseNavigationController.init(rootViewController: ELLoginVC())
+            
+            self.navigationController?.presentViewController(na, animated: true, completion: {})
+            self.navigationController?.tabBarController?.selectedIndex = 2
+            
+            return
+        }
+    }
     
     func scrollViewDidScroll(scrollView: UIScrollView) {
         
@@ -110,9 +125,9 @@ class ELMyViewController:CMBaseViewController ,RETableViewManagerDelegate{
             heardView.frame = f
             
             self.heardView.backImage.frame = CGRectMake(0,
-                                              f.origin.y,
-                                              ScreenWidth,
-                                              200)
+                                                        f.origin.y,
+                                                        ScreenWidth,
+                                                        200)
             
         }
         

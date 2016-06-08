@@ -315,7 +315,6 @@ extension ELLookVC{
         var labelTwo = UILabel()
         var labelThree = UILabel()
         for temp in 0...2 {
-//            let label = UILabel.init(frame: CGRectMake(CGFloat(temp)*(ScreenWidth/3), 0, ScreenWidth/3, 44))
             let label = UILabel()
             label.textAlignment = .Center
             label.text = array[temp]
@@ -360,14 +359,38 @@ extension ELLookVC{
     
     //删除函数
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath){
-        if editingStyle == UITableViewCellEditingStyle.Delete {
-            let lef = self.arrayData[indexPath.row]
+     
+        let cheView = ELCheckView.init(frame: CGRectMake(0, 0, ScreenWidth, ScreenHeight))
+        cheView.initBack { [unowned self] (tagString) in
             
-            if deleteInformationData(lef.creatTime!) {
-                self.arrayData.removeAtIndex(indexPath.row)
-                tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
+            ///  100确定  101忘记密码
+            if tagString == "100" {
+                
+                if queryDataUser().passWord != cheView.psWdTextFlied.text {
+                    
+                    SVProgressHUD.showInfoWithStatus("密码错误")
+                    
+                    return
+                }
+            
+                if editingStyle == UITableViewCellEditingStyle.Delete {
+                    let lef = self.arrayData[indexPath.row]
+                    
+                    if deleteInformationData(lef.creatTime!) {
+                        self.arrayData.removeAtIndex(indexPath.row)
+                        tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
+                    }
+                }
+                cheView.removeFromSuperview()
+            }else{
+                
+                cheView.removeFromSuperview()
+                self.navigationController?.pushViewController(ELResetPasswordVC(), animated: true)
             }
         }
+        
+        UIApplication.sharedApplication().keyWindow?.addSubview(cheView)
+
     }
     
     //把delete 该成中文
