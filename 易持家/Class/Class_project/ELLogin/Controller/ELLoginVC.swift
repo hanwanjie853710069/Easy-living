@@ -127,8 +127,8 @@ class ELLoginVC: CMBaseViewController {
     
     func outInTouch(barButtonItem: UIBarButtonItem){
     
-        self.navigationController?.dismissViewControllerAnimated(true, completion: { 
-            self.navigationController?.tabBarController?.selectedIndex = 2
+        self.dismissViewControllerAnimated(true, completion: {
+          
         })
         
     }

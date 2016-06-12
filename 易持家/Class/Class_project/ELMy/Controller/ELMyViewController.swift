@@ -8,7 +8,10 @@
 
 import UIKit
 
-class ELMyViewController:CMBaseViewController ,RETableViewManagerDelegate{
+
+class ELMyViewController:
+      CMBaseViewController ,
+      RETableViewManagerDelegate{
     
     lazy var tableView: UITableView = {
         
@@ -40,8 +43,10 @@ class ELMyViewController:CMBaseViewController ,RETableViewManagerDelegate{
         
         let hV = ELMyCellHeardView.init(frame: CGRectMake(0, 64, ScreenWidth, 200),
                                         nameLabel: queryDataUser().nickName!,
-                                        heardImageUrl: "heardImage",
-                                        backImage:"Iocn_El")
+                                        heardImageUrl: getHeardImage(),
+                                        backImage:"Iocn_El",
+                                        mySelf:self)
+    
         
         return hV
         
@@ -76,60 +81,6 @@ class ELMyViewController:CMBaseViewController ,RETableViewManagerDelegate{
         self.manager.addSection(section)
         
     }
+
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        
-        self.navigationController?.pushViewController(ELHtmlVC(), animated: true)
-        
-    }
-    
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        if queryDataUser().passWord == "" {
-            
-            self.navigationController?.tabBarController?.selectedIndex = 2
-            
-            let na = CMBaseNavigationController.init(rootViewController: ELLoginVC())
-            
-            self.navigationController?.presentViewController(na, animated: true, completion: {})
-            self.navigationController?.tabBarController?.selectedIndex = 2
-            
-            return
-        }
-    }
-    
-    func scrollViewDidScroll(scrollView: UIScrollView) {
-        
-        let yOffset = tableView.contentOffset.y
-        
-        if yOffset < 64 {
-            
-            let factor = abs(yOffset) + 200
-            
-            let f = CGRectMake(-(ScreenWidth * factor / 200 - ScreenWidth)/2,
-                               -abs(yOffset) ,
-                               ScreenWidth * factor / 200,
-                               factor)
-            
-            self.heardView.backImage.frame = f
-            
-        }else{
-            
-            var f = heardView.frame
-            
-            f.origin.y = 0
-            
-            heardView.frame = f
-            
-            self.heardView.backImage.frame = CGRectMake(0,
-                                                        f.origin.y,
-                                                        ScreenWidth,
-                                                        200)
-            
-        }
-        
-    }
 }

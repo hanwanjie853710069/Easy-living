@@ -172,9 +172,71 @@ func getColorImageWithColor(color:UIColor) ->(UIImage){
     
 }
 
+//创建文件夹
+func createAFolder(){
+    
+    if !NSFileManager.defaultManager().fileExistsAtPath(getheardImageFilePath()) {
+        
+        _ = try?  NSFileManager.defaultManager().createDirectoryAtPath(getheardImageFilePath(), withIntermediateDirectories: false, attributes: nil)
+    }
+    
+}
 
+///  获取头像文件夹路径
+func getheardImageFilePath() ->String{
+    
+    let paths = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)
+    
+    let documentsDirectory = paths.first
+    
+//    let last = paths.last
+    
+//    let pathsc = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.CachesDirectory, NSSearchPathDomainMask.UserDomainMask, true)
+    
+//    let cachesF = pathsc.first
+    
+//    let cachesL = pathsc.last
+    
+//    print(NSTemporaryDirectory())
+    
+    let path = documentsDirectory!.stringByAppendingString("/HeardImageFile")
+    
+    print(path)
+    
+    return path
+}
 
+///  保存图片到本地
+///  - parameter image: 要保存的图片
+func saveHeardImageWithImage(image:UIImage){
+    //  图片压缩data
+    let dataImage = UIImageJPEGRepresentation(image, 1.0)
+    
+    let path = getHeardPath()
+    
+    dataImage!.writeToFile(path, atomically: true)
+    
+}
 
+///  获取图片
 
+func getHeardImage() -> UIImage {
+    
+    let path = getHeardPath()
+    
+    if !NSFileManager.defaultManager().fileExistsAtPath(path) {
+        
+        return UIImage()
+        
+    }
+    
+    return UIImage.init(contentsOfFile: path)!
+}
 
+///  获取图片路径
+func getHeardPath() -> String{
+    
+    return getheardImageFilePath() + "/" + queryDataUser().userName! + ".jpg"
+    
+}
 

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2BA918610F6AFCD65C59948F /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C3E59CEF8406EA3CDCFB464 /* libPods.a */; };
+		6A104CCF1D0D32B000F7BCD5 /* ELMyVCExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A104CCE1D0D32B000F7BCD5 /* ELMyVCExtension.swift */; };
 		6A1147851D07A8E5004229A6 /* ELLoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A1147841D07A8E5004229A6 /* ELLoginVC.swift */; };
 		6A11478C1D07B21B004229A6 /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A11478A1D07B21B004229A6 /* User+CoreDataProperties.swift */; };
 		6A11478D1D07B21B004229A6 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A11478B1D07B21B004229A6 /* User.swift */; };
@@ -148,6 +149,7 @@
 		1599265197BDDF7DBEBA3E1F /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		2C3E59CEF8406EA3CDCFB464 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		5EB1FED89634B08ED0DF235B /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		6A104CCE1D0D32B000F7BCD5 /* ELMyVCExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ELMyVCExtension.swift; sourceTree = "<group>"; };
 		6A1147841D07A8E5004229A6 /* ELLoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ELLoginVC.swift; sourceTree = "<group>"; };
 		6A11478A1D07B21B004229A6 /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "User+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		6A11478B1D07B21B004229A6 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -443,6 +445,7 @@
 				6AD87E0F1D01539700A8804C /* ELMyCellHeardView.swift */,
 				6AD87E131D01693900A8804C /* MyViewRECell.swift */,
 				6A9951F71D069E180075F20D /* ELMyHtmlCell.swift */,
+				6A104CCE1D0D32B000F7BCD5 /* ELMyVCExtension.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1378,6 +1381,7 @@
 				6AAB44631CF8396100BD124D /* ZFXAxisLine.m in Sources */,
 				6A1CE08A1CEE96570096D618 /* ___.xcdatamodeld in Sources */,
 				6A1CE0E71CEEAEE10096D618 /* ALView+PureLayout.m in Sources */,
+				6A104CCF1D0D32B000F7BCD5 /* ELMyVCExtension.swift in Sources */,
 				6A9951FB1D06B3430075F20D /* UIView+Extension.m in Sources */,
 				6A4704431CF021FB002741F1 /* IQPreviousNextView.swift in Sources */,
 				6A4704381CF021FB002741F1 /* IQUIScrollView+Additions.swift in Sources */,
