@@ -13,6 +13,8 @@ class MyViewRECell: RETableViewCell {
     var heardImage: UIImageView!
     var nameLabel:  UILabel!
     var arrowImage: UIImageView!
+    var contentLabel: UILabel!
+    
     
     override func cellDidLoad() {
         super.cellDidLoad()
@@ -35,7 +37,18 @@ class MyViewRECell: RETableViewCell {
         self.nameLabel.autoPinEdgeToSuperviewEdge(.Bottom)
         self.nameLabel.autoPinEdgeToSuperviewEdge(.Top)
         self.nameLabel.autoPinEdge(.Left, toEdge: .Right, ofView: self.heardImage, withOffset: 10)
-        self.nameLabel.autoPinEdge(.Right, toEdge: .Left, ofView: self.arrowImage, withOffset: 10)
+        self.nameLabel.autoSetDimension(.Width, toSize: 70)
+        
+        self.contentLabel = UILabel()
+        self.contentLabel.font = UIFont.systemFontOfSize(14)
+        self.contentLabel.textColor = UIColor.darkGrayColor()
+        self.contentLabel.textAlignment = .Right
+        self.contentView.addSubview(self.contentLabel)
+        self.contentLabel.autoPinEdgeToSuperviewEdge(.Bottom)
+        self.contentLabel.autoPinEdgeToSuperviewEdge(.Top)
+        self.contentLabel.autoPinEdge(.Left, toEdge: .Right, ofView: self.nameLabel, withOffset: 10)
+        self.contentLabel.autoPinEdge(.Right, toEdge: .Left, ofView: self.arrowImage, withOffset: -10)
+        self.contentLabel.text = "你好"
         
     }
 

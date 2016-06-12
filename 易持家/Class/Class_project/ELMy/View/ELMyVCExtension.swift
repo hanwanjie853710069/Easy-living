@@ -15,18 +15,99 @@ extension ELMyViewController {
         
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
-        let alertController = UIAlertController(title: "数据保存成功",
-                                                message: "数据保存", preferredStyle: .Alert)
-        alertController.addTextFieldWithConfigurationHandler { (text) in
-            print("aaaa")
+        switch indexPath.row {
+        case 0:
+            modifyTheNickname()
+        case 1:
+            modifyTheNianI()
+        case 2:
+            modifyTheAge()
+        default:
+            changeCharacterSignature()
         }
+        
+    }
+    
+    func  modifyTheNickname(){
+        
+        let alertController = UIAlertController(title: "昵称",
+                                                message: nil, preferredStyle: .Alert)
+        alertController.addTextFieldWithConfigurationHandler { (text) in
+            text.placeholder = "修改昵称"
+        }
+        
+        let cancelAction = UIAlertAction(title: "取消", style: .Cancel, handler: {
+            action in
+            
+        })
+        
+        alertController.addAction(cancelAction)
+        
+        let okAction = UIAlertAction(title: "确定", style: .Default, handler: {
+            action in
+            
+        })
+        
+        alertController.addAction(okAction)
+        
+        self.presentViewController(alertController, animated: true, completion: nil)
+        
+    }
+    
+    func  modifyTheNianI(){
+        
+        let alertController = UIAlertController(title: nil,
+                                                message: nil,
+                                                preferredStyle: .ActionSheet)
+        
+        let cancelAction = UIAlertAction(title: "取消", style: .Cancel, handler: {
+            action in
+            
+        })
+        
+        alertController.addAction(cancelAction)
+        
+        let okAction = UIAlertAction(title: "男", style: .Default, handler: {
+            action in
+            
+        })
+        
+        let nvAction = UIAlertAction(title: "女", style: .Default, handler: {
+            action in
+            
+        })
+        alertController.addAction(okAction)
+        alertController.addAction(nvAction)
         
         self.presentViewController(alertController, animated: true, completion: nil)
         
         
-        //    let alt = UIAlertView.init(title: "修改昵称", message: "", delegate: nil, cancelButtonTitle: "取消", otherButtonTitles: "确定")
-        //        alt.alertViewStyle = .PlainTextInput
-        //        alt.show()
+        
+    }
+    
+    func changeCharacterSignature(){
+        
+        let alertController = UIAlertController(title: "个性签名",
+                                                message: nil, preferredStyle: .Alert)
+        alertController.addTextFieldWithConfigurationHandler { (text) in
+            text.placeholder = "修改个性签名"
+        }
+        
+        let cancelAction = UIAlertAction(title: "取消", style: .Cancel, handler: {
+            action in
+            
+        })
+        
+        alertController.addAction(cancelAction)
+        
+        let okAction = UIAlertAction(title: "确定", style: .Default, handler: {
+            action in
+            
+        })
+        
+        alertController.addAction(okAction)
+        
+        self.presentViewController(alertController, animated: true, completion: nil)
         
     }
     
@@ -59,6 +140,18 @@ extension ELMyViewController {
                                                         200)
             
         }
+        
+    }
+    
+    func  modifyTheAge(){
+        
+        let dateP = DatePackerView.init(frame: CGRectMake(0, 0, ScreenWidth, ScreenHeight))
+        
+        dateP.initTimeBack {[unowned self] (timeString) in
+            
+        }
+        
+        UIApplication.sharedApplication().keyWindow?.addSubview(dateP)
         
     }
     

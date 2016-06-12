@@ -33,7 +33,7 @@ class DatePackerView: UIView {
         // 设置日期范围（超过日期范围，会回滚到最近的有效日期）
         var dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
-        var minDate = dateFormatter.dateFromString("2016-5-20")
+        var minDate = dateFormatter.dateFromString("1900-01-01")
         dateP.maximumDate = NSDate()
         dateP.minimumDate = minDate
         // 设置默认时间

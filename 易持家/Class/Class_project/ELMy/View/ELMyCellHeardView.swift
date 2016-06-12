@@ -12,7 +12,7 @@ class ELMyCellHeardView: UIView ,
     UIActionSheetDelegate,
     UIImagePickerControllerDelegate,
     UINavigationControllerDelegate,
-UIApplicationDelegate{
+    UIApplicationDelegate{
 
     var headImage: UIButton!
     
