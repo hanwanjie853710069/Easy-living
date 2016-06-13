@@ -10,8 +10,8 @@ import UIKit
 
 
 class ELMyViewController:
-      CMBaseViewController ,
-      RETableViewManagerDelegate{
+    CMBaseViewController ,
+RETableViewManagerDelegate{
     
     lazy var tableView: UITableView = {
         
@@ -44,19 +44,25 @@ class ELMyViewController:
         let hV = ELMyCellHeardView.init(frame: CGRectMake(0, 64, ScreenWidth, 200),
                                         nameLabel: queryDataUser().nickName!,
                                         heardImageUrl: getHeardImage(),
-                                        backImage:"Iocn_El",
+                                        backImage:getBackImage(),
                                         mySelf:self)
-    
+        
         
         return hV
         
     }()
     
-    let dataArray = [["name":"昵称",   "image":"myPage_icon"],
-                     ["name":"性别",   "image":"myPage_icon"],
-                     ["name":"年龄","image":"myPage_icon"],
-                     ["name":"个性签名","image":"myPage_icon"]]
-    
+    var dataArray: [Dictionary<String,String?>] {
+        get{
+            
+            let array = [["name":"昵称",   "image":"nick_image", "content":queryDataUser().nickName],
+                         ["name":"性别",   "image":"sex_image", "content":queryDataUser().sex],
+                         ["name":"生日","image":"birthdad_image", "content":queryDataUser().age]]
+            return array
+            
+        }
+        
+    }
     
     override func viewDidLoad() {
         
@@ -68,19 +74,8 @@ class ELMyViewController:
         
         self.view.addSubview(self.tableView)
         
-        let section = RETableViewSection.init()
-        
-        for dict in dataArray {
-            
-            let item = MyViewItem.init(title: dict["name"]!, imageNameS: dict["image"]!, myItem: { (myItem) in })
-            
-            section.addItem(item)
-            
-        }
-        
-        self.manager.addSection(section)
+        reloadTableView()
         
     }
-
     
 }

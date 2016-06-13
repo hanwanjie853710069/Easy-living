@@ -206,8 +206,7 @@ func getheardImageFilePath() ->String{
     return path
 }
 
-///  保存图片到本地
-///  - parameter image: 要保存的图片
+///  保存头像图片到本地
 func saveHeardImageWithImage(image:UIImage){
     //  图片压缩data
     let dataImage = UIImageJPEGRepresentation(image, 1.0)
@@ -218,7 +217,7 @@ func saveHeardImageWithImage(image:UIImage){
     
 }
 
-///  获取图片
+///  获取头像图片
 
 func getHeardImage() -> UIImage {
     
@@ -233,10 +232,42 @@ func getHeardImage() -> UIImage {
     return UIImage.init(contentsOfFile: path)!
 }
 
-///  获取图片路径
+///  获取头像图片路径
 func getHeardPath() -> String{
     
     return getheardImageFilePath() + "/" + queryDataUser().userName! + ".jpg"
     
 }
 
+///  获取背景图路径
+func getBackPath() -> String{
+    
+    return getheardImageFilePath() + "/" + queryDataUser().userName! + "back.jpg"
+    
+}
+
+///  保存背景图片到本地
+func saveBackImageWithImage(image:UIImage){
+    //  图片压缩data
+    let dataImage = UIImageJPEGRepresentation(image, 1.0)
+    
+    let path = getBackPath()
+    
+    dataImage!.writeToFile(path, atomically: true)
+    
+}
+
+///  获取背景图片
+
+func getBackImage() -> UIImage {
+    
+    let path = getBackPath()
+    
+    if !NSFileManager.defaultManager().fileExistsAtPath(path) {
+        
+        return UIImage()
+        
+    }
+    
+    return UIImage.init(contentsOfFile: path)!
+}

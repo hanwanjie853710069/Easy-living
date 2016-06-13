@@ -15,13 +15,17 @@ class MyViewItem: RETableViewItem {
     
     var imageNameS: String!
     
-    init(title: String, imageNameS:String, myItem:MyViewItem ->()) {
+    var contentNameS: String!
+    
+    init(title: String, imageNameS:String, contentNameS: String, myItem:MyViewItem ->()) {
         
         super.init(title: nil)
         
         self.imageNameS = imageNameS
         
         self.titleNameS = title
+        
+        self.contentNameS = contentNameS
     }
     
     override init() {

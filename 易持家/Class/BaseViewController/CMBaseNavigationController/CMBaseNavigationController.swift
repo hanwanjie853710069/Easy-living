@@ -18,6 +18,7 @@ class CMBaseNavigationController: UINavigationController {
     }
     
     func creatUI() {
+        
         UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
         UINavigationBar.appearance().tintColor = DarkGrayTextColor
         

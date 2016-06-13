@@ -44,13 +44,48 @@ extension ELMyViewController {
         alertController.addAction(cancelAction)
         
         let okAction = UIAlertAction(title: "确定", style: .Default, handler: {
-            action in
+            [unowned self] action in
             
-        })
+            let textF = alertController.textFields![0]
+            
+            if (textF.text!.isEmpty) {
+                SVProgressHUD.showInfoWithStatus("请输入昵称")
+                return
+            }
+            
+            self.heardView.nameLabel.text = textF.text
+            
+            modifyTheUserData("nickName", modifyValue: textF.text!)
+            
+            self.reloadTableView()
+            
+            SVProgressHUD.showInfoWithStatus("昵称修改成功")
+            
+            })
         
         alertController.addAction(okAction)
         
         self.presentViewController(alertController, animated: true, completion: nil)
+        
+    }
+    
+    func reloadTableView() {
+        
+        self.manager.removeAllSections()
+        
+        let section = RETableViewSection.init()
+        
+        for dict in dataArray {
+            
+            let item = MyViewItem.init(title: dict["name"]!!, imageNameS: dict["image"]!!, contentNameS: dict["content"]!!, myItem: { (myItem) in })
+            
+            section.addItem(item)
+            
+        }
+        
+        self.manager.addSection(section)
+     
+        self.tableView.reloadData()
         
     }
     
@@ -68,12 +103,22 @@ extension ELMyViewController {
         alertController.addAction(cancelAction)
         
         let okAction = UIAlertAction(title: "男", style: .Default, handler: {
-            action in
+           [unowned self] action in
+            modifyTheUserData("sex", modifyValue: "男")
             
+            self.reloadTableView()
+            
+            SVProgressHUD.showInfoWithStatus("性别修改成功")
         })
         
         let nvAction = UIAlertAction(title: "女", style: .Default, handler: {
-            action in
+           [unowned self] action in
+            
+            modifyTheUserData("sex", modifyValue: "女")
+            
+            self.reloadTableView()
+            
+            SVProgressHUD.showInfoWithStatus("性别修改成功")
             
         })
         alertController.addAction(okAction)
@@ -113,9 +158,11 @@ extension ELMyViewController {
     
     func scrollViewDidScroll(scrollView: UIScrollView) {
         
-        let yOffset = tableView.contentOffset.y
+        var yOffset = self.manager.tableView.contentOffset.y
         
-        if yOffset < 64 {
+        if yOffset < -64 {
+            
+            yOffset = yOffset + 64
             
             let factor = abs(yOffset) + 200
             
@@ -148,6 +195,14 @@ extension ELMyViewController {
         let dateP = DatePackerView.init(frame: CGRectMake(0, 0, ScreenWidth, ScreenHeight))
         
         dateP.initTimeBack {[unowned self] (timeString) in
+            
+            let age = timeString.componentsSeparatedByString("  ")
+            
+            let ageString = age[0]
+            
+            modifyTheUserData("age", modifyValue: ageString)
+            
+            self.reloadTableView()
             
         }
         

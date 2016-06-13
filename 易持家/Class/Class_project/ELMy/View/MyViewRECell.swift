@@ -48,7 +48,6 @@ class MyViewRECell: RETableViewCell {
         self.contentLabel.autoPinEdgeToSuperviewEdge(.Top)
         self.contentLabel.autoPinEdge(.Left, toEdge: .Right, ofView: self.nameLabel, withOffset: 10)
         self.contentLabel.autoPinEdge(.Right, toEdge: .Left, ofView: self.arrowImage, withOffset: -10)
-        self.contentLabel.text = "你好"
         
     }
 
@@ -59,6 +58,7 @@ class MyViewRECell: RETableViewCell {
         self.heardImage.image = UIImage(named: item.imageNameS)
         self.nameLabel.text   = item.titleNameS
         self.arrowImage.image = UIImage(named: "arrow_right")
+        self.contentLabel.text = item.contentNameS
         
     }
 }

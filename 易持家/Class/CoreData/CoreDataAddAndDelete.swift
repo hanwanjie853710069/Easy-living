@@ -590,7 +590,7 @@ func deleteUserInformation(){
     
 }
 
-/// 向数据表Information修改数据
+/// 向数据表User修改数据
 
 func modifyTheUserData(modifyName: String, modifyValue: String ) ->Bool{
     

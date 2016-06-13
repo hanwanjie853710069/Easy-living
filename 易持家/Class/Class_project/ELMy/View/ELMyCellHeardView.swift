@@ -13,7 +13,7 @@ class ELMyCellHeardView: UIView ,
     UIImagePickerControllerDelegate,
     UINavigationControllerDelegate,
     UIApplicationDelegate{
-
+    
     var headImage: UIButton!
     
     var nameLabel: UILabel!
@@ -22,9 +22,9 @@ class ELMyCellHeardView: UIView ,
     
     var myS:UIViewController!
     
+    var identify = 0 ///0更改头像  1更改背景图
     
-    
-    init(frame: CGRect, nameLabel: String, heardImageUrl: UIImage, backImage: String, mySelf:UIViewController) {
+    init(frame: CGRect, nameLabel: String, heardImageUrl: UIImage, backImage: UIImage, mySelf:UIViewController) {
         
         super.init(frame: frame)
         
@@ -34,10 +34,20 @@ class ELMyCellHeardView: UIView ,
         
     }
     
-    func creatUI(nameLabel: String, heardImageUrl: UIImage, backImage:String){
-    
+    func creatUI(nameLabel: String, heardImageUrl: UIImage, backImage:UIImage){
+        
         self.backImage = UIImageView()
-        self.backImage.image = UIImage(named: backImage)
+        
+        if !NSFileManager.defaultManager().fileExistsAtPath(getBackPath()) {
+            
+            self.backImage.image = UIImage(named: "Iocn_El")
+            
+        }else{
+            
+            self.backImage.image = backImage
+    
+        }
+        
         
         self.headImage = UIButton()
         self.headImage.layer.cornerRadius = (self.frame.size.height - 130)/2
@@ -47,7 +57,7 @@ class ELMyCellHeardView: UIView ,
         
         if !NSFileManager.defaultManager().fileExistsAtPath(getHeardPath()) {
             
-             self.headImage.setImage(UIImage(named: "heardImage"), forState: .Normal)
+            self.headImage.setImage(UIImage(named: "heardImage"), forState: .Normal)
             
         }else{
             
@@ -95,7 +105,9 @@ class ELMyCellHeardView: UIView ,
     
     func heardImageTouch(){
         
-        let sheet = UIActionSheet(title: nil,
+        identify = 0
+        
+        let sheet = UIActionSheet(title: "修改头像",
                                   delegate: self,
                                   cancelButtonTitle: "取消",
                                   destructiveButtonTitle: nil,
@@ -147,11 +159,24 @@ class ELMyCellHeardView: UIView ,
         
         let originalImage = editingInfo[UIImagePickerControllerOriginalImage] as? UIImage
         //        let smallImage = UIImageJPEGRepresentation(originalImage!, 0.5)
-        headImage.setImage(originalImage, forState: .Normal)
         
-        saveHeardImageWithImage(originalImage!)
-        
-        SVProgressHUD.showInfoWithStatus("头像修改成功")
+        if identify == 0 {
+            
+            headImage.setImage(originalImage, forState: .Normal)
+            
+            saveHeardImageWithImage(originalImage!)
+            
+            SVProgressHUD.showInfoWithStatus("头像修改成功")
+            
+        }else{
+            
+            backImage.image = originalImage
+            
+            saveBackImageWithImage(originalImage!)
+            
+            SVProgressHUD.showInfoWithStatus("背景图修改成功")
+            
+        }
         
         myS.dismissViewControllerAnimated(true, completion: { () -> Void in})
     }
@@ -159,5 +184,19 @@ class ELMyCellHeardView: UIView ,
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {
         myS.dismissViewControllerAnimated(true, completion: { () -> Void in})
     }
-
+    
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        super.touchesBegan(touches, withEvent: event)
+        
+        identify = 1
+        
+        let sheet = UIActionSheet(title: "修改背景图",
+                                  delegate: self,
+                                  cancelButtonTitle: "取消",
+                                  destructiveButtonTitle: nil,
+                                  otherButtonTitles: "拍照","从相册中选取")
+        
+        sheet.showInView(myS.view)
+    }
+    
 }
