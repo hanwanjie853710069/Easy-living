@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CMBaseViewController: UIViewController {
+class CMBaseViewController: UIViewController, UITabBarDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()

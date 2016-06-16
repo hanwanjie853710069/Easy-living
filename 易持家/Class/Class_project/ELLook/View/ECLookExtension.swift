@@ -148,6 +148,7 @@ extension ELCheckTheDetailsVC{
         let cell =  AddRiceVcCell.cellFor(tableView)
         cell.nameLabel.text = dataArray[indexPath.row - 1]
         cell.amountTextFile.tag = 100 + indexPath.row
+        cell.noteTextView.tag = 200 + indexPath.row
         cell.delegate = self
         if self.ModifyBool {
             cell.userInteractionEnabled = true
@@ -304,6 +305,7 @@ extension ELLookVC{
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         let vc = ELCheckTheDetailsVC()
         vc.infDetails = self.arrayData[indexPath.row]
+        print(vc.infDetails)
         self.navigationController?.pushViewController(vc, animated: true)
     }
     

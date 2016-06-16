@@ -162,6 +162,8 @@ func getColorImageWithColor(color:UIColor) ->(UIImage){
     
     CGContextSetFillColorWithColor(context, color.CGColor);
     
+    let font = UIFont.boldSystemFontOfSize(18.0)
+    
     CGContextFillRect(context, rect);
     
     let img = UIGraphicsGetImageFromCurrentImageContext();

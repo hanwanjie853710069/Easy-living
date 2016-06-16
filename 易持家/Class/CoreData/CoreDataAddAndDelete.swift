@@ -159,6 +159,7 @@ func deleteInformationData(reattTimeIds: String) ->Bool{
     do{
         //重新保存-更新到数据库
         try managedObjectContext.save()
+        
     }catch {
         fatalError("重新保存-更新到数据库：\(error)")
     }
@@ -184,7 +185,15 @@ func modifyTheInterformationData(zsMoney: String ,
     
     do {
         
-        let fetchedObjects:[AnyObject]? = try managedObjectContext.executeFetchRequest(getNSFetchRequest())
+        
+        //查询条件
+        let predicate = NSPredicate(format: "creatTime= '\(cjTime)' ", "")
+        
+        let fetchRequest = getNSFetchRequest()
+        
+        fetchRequest.predicate = predicate
+        
+        let fetchedObjects:[AnyObject]? = try managedObjectContext.executeFetchRequest(fetchRequest)
         
         //遍历查询的结果
         

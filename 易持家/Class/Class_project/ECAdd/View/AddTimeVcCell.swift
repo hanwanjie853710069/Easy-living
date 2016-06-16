@@ -12,7 +12,7 @@ class AddTimeVcCell: UITableViewCell {
     
     var timer: NSTimer!
     var number = 0
-    
+    static let cellId = "timeCell"
     var rollingLabel:UILabel = {
        let label = UILabel.init(frame: CGRectMake(ScreenWidth, 70, 770, 30))
         label.font = UIFont.systemFontOfSize(16)
@@ -30,8 +30,7 @@ class AddTimeVcCell: UITableViewCell {
         return btn
     }()
     
-    static let cellId = "timeCell"
-    
+
     //闭包类似回调
     typealias callbackfunc=()->()
     var myFunc = callbackfunc?()

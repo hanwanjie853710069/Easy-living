@@ -1538,13 +1538,15 @@
 			baseConfigurationReference = 5EB1FED89634B08ED0DF235B /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Shunhua Software Technology Co., Ltd.";
 				INFOPLIST_FILE = "易持家/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.shuhuasoft.Intelli;
 				PRODUCT_NAME = EasyLiving;
+				PROVISIONING_PROFILE = "75551f4c-b2f1-455c-a4f4-a21ddc71a58d";
 				SWIFT_OBJC_BRIDGING_HEADER = "易持家/Supporting Files/ELHeard.h";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -1553,13 +1555,15 @@
 			baseConfigurationReference = 1599265197BDDF7DBEBA3E1F /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Shunhua Software Technology Co., Ltd.";
 				INFOPLIST_FILE = "易持家/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.shuhuasoft.Intelli;
 				PRODUCT_NAME = EasyLiving;
+				PROVISIONING_PROFILE = "75551f4c-b2f1-455c-a4f4-a21ddc71a58d";
 				SWIFT_OBJC_BRIDGING_HEADER = "易持家/Supporting Files/ELHeard.h";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
