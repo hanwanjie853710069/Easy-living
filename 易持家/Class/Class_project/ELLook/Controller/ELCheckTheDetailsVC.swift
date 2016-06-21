@@ -54,6 +54,7 @@ UITableViewDataSource{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
         getData()
         self.title = "详情列表"
         self.view.backgroundColor = UIColor.whiteColor()
@@ -61,7 +62,18 @@ UITableViewDataSource{
         
         /// 注册通知
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.getMonery), name:theTotalAmountIds, object: nil)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self,
+                                                         selector: "backgroundContextDidSave:",
+                                                         name: NSManagedObjectContextDidSaveNotification,
+                                                         object: managedObjectContext)
     }
-    
+   
+    func backgroundContextDidSave(notification: NSNotification){
+        managedObjectContext.performBlock(){
+            managedObjectContext.mergeChangesFromContextDidSaveNotification(notification)
+            print(notification)
+        }
+    }
 }
 

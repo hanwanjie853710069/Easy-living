@@ -182,18 +182,18 @@ func modifyTheInterformationData(zsMoney: String ,
                                  cjTime:  String ) ->Bool{
     
     //查询操作
-    
     do {
         
-        
         //查询条件
-        let predicate = NSPredicate(format: "creatTime= '\(cjTime)' ", "")
+        let predicate = NSPredicate(format: "creatTime= '\(cjTime)' ")
         
         let fetchRequest = getNSFetchRequest()
         
         fetchRequest.predicate = predicate
         
-        let fetchedObjects:[AnyObject]? = try managedObjectContext.executeFetchRequest(fetchRequest)
+        let fetchedObjects:[AnyObject]? = try
+            
+            managedObjectContext.executeFetchRequest(fetchRequest)
         
         //遍历查询的结果
         

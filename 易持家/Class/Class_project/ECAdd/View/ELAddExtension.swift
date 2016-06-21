@@ -102,6 +102,7 @@ extension ELAddVC{
         let textFiled = notification.object as! UITextField
         //通知的名称
         //        let nameNotification = notification.name
+        
         //接收object 对象 一些信息 例如入键盘的一些信息
         //notification.userInfo
         if textFiled.text?.characters.count > 0 {
@@ -205,15 +206,15 @@ extension ELAddVC{
                                         
                                         ///  存储数据
                                         insertInterformationData(self.zzwData.zsMoney,
-                                            zsNote: self.zzwData.zsNote,
+                                            zsNote:  self.zzwData.zsNote,
                                             zwMoney: self.zzwData.zwMoney,
-                                            zwNote: self.zzwData.zwNote,
+                                            zwNote:  self.zzwData.zwNote,
                                             wsMoney: self.zzwData.wsMoney,
-                                            wsNote: self.zzwData.wsNote,
-                                            zjeMoney: self.zjeMoney,
-                                            xfMonery: self.xfMonery,
-                                            syMonery: self.syMonery,
-                                            xfTime: self.xfTime)
+                                            wsNote:  self.zzwData.wsNote,
+                                            zjeMoney:self.zjeMoney,
+                                            xfMonery:self.xfMonery,
+                                            syMonery:self.syMonery,
+                                            xfTime:  self.xfTime)
                                         print("确定")
         })
         alertController.addAction(cancelAction)

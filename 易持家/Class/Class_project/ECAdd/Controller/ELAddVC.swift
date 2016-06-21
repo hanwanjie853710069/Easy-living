@@ -49,6 +49,7 @@ class ELAddVC:
         super.viewDidLoad()
         /// 注册通知
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.getTheTotalAmount), name:theTotalAmountIds, object: nil)
+
         creatUI()
     }
     
